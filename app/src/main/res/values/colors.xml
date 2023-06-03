@@ -5,14 +5,14 @@
 
     /*Color palette*/
     <color name="a">#001155</color>
-    <color name="a">#0044ff</color>
-    <color name="a">#11aaff</color>
-    <color name="a">#99ddcc</color>
-    <color name="a">#ffff00</color>
+    <color name="b">#0044ff</color>
+    <color name="c">#11aaff</color>
+    <color name="d">#99ddcc</color>
+    <color name="e">#ffff00</color>
 
-    <color name="a">#112233</color>
-    <color name="a">#1155aa</color>
-    <color name="a">#4499cc</color>
-    <color name="a">#aaccbb</color>
-    <color name="a">#bbbb33</color>
+    <color name="f">#112233</color>
+    <color name="g">#1155aa</color>
+    <color name="h">#4499cc</color>
+    <color name="i">#aaccbb</color>
+    <color name="j">#bbbb33</color>
 </resources>
