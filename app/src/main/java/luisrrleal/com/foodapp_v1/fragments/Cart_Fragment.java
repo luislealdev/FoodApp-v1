@@ -1,4 +1,4 @@
-package luisrrleal.com.foodapp_v1;
+package luisrrleal.com.foodapp_v1.fragments;
 
 import android.os.Bundle;
 
@@ -8,15 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Help_Fragment extends Fragment {
+import luisrrleal.com.foodapp_v1.R;
 
-    public Help_Fragment() {
+public class Cart_Fragment extends Fragment {
+    public Cart_Fragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static Help_Fragment newInstance(String param1, String param2) {
-        Help_Fragment fragment = new Help_Fragment();
+    public static Cart_Fragment newInstance() {
+        Cart_Fragment fragment = new Cart_Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -31,6 +31,6 @@ public class Help_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_help, container, false);
+        return inflater.inflate(R.layout.fragment_cart, container, false);
     }
 }

@@ -9,7 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import luisrrleal.com.foodapp_v1.fragments.Cart_Fragment;
+import luisrrleal.com.foodapp_v1.fragments.Help_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Home_Fragment;
+import luisrrleal.com.foodapp_v1.fragments.Profile_Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TO SEE HOME PAGE
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         //TO SEE LOGIN (AND REGISTER)
-        setContentView(R.layout.activity_login);
+        //setContentView(R.layout.activity_login);
     }
 
     //LOAD FRAGMENTS DEPENDING ON WHAT MENU OPTION ARE
@@ -33,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         } else if(item.getItemId()==R.id.nav_cart){
             loadFragment(Cart_Fragment.newInstance());
         }else if(item.getItemId()==R.id.nav_profile){
-
+            loadFragment(Profile_Fragment.newInstance());
         }else if(item.getItemId()==R.id.nav_help){
-
+            loadFragment(Help_Fragment.newInstance());
         }
 
         return super.onOptionsItemSelected(item);
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         //transaction.replace(fragmentContainer.getId(), new_fragment);
-        transaction.replace(R.id.fragmentContainerView, new_fragment);
+        transaction.replace(R.id.home_fragmentcontainer, new_fragment);
         transaction.commit();
     }
 }
