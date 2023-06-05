@@ -10,8 +10,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TO SEE HOME PAGE
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         //TO SEE LOGIN (AND REGISTER)
-        setContentView(R.layout.activity_login);
+        //setContentView(R.layout.activity_login);
     }
 }
