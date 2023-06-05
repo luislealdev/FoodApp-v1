@@ -9,6 +9,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //TO SEE HOME PAGE
+        //setContentView(R.layout.activity_main);
+        //TO SEE LOGIN (AND REGISTER)
+        setContentView(R.layout.activity_login);
     }
 }
