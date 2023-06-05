@@ -1,4 +1,4 @@
-package luisrrleal.com.foodapp_v1.fragments;
+package luisrrleal.com.foodapp_v1;
 
 import android.os.Bundle;
 
@@ -8,15 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import luisrrleal.com.foodapp_v1.R;
-public class Register_Fragment extends Fragment {
+public class Profile_Fragment extends Fragment {
 
-    public Register_Fragment() {
+    public Profile_Fragment() {
         // Required empty public constructor
     }
 
-    public static Register_Fragment newInstance() {
-        Register_Fragment fragment = new Register_Fragment();
+    public static Profile_Fragment newInstance(String param1, String param2) {
+        Profile_Fragment fragment = new Profile_Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -31,6 +30,6 @@ public class Register_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }

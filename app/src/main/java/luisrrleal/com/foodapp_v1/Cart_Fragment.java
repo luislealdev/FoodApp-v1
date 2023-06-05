@@ -1,4 +1,4 @@
-package luisrrleal.com.foodapp_v1.fragments;
+package luisrrleal.com.foodapp_v1;
 
 import android.os.Bundle;
 
@@ -7,16 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import luisrrleal.com.foodapp_v1.R;
-public class Register_Fragment extends Fragment {
-
-    public Register_Fragment() {
+public class Cart_Fragment extends Fragment {
+    public Cart_Fragment() {
         // Required empty public constructor
     }
 
-    public static Register_Fragment newInstance() {
-        Register_Fragment fragment = new Register_Fragment();
+    public static Cart_Fragment newInstance() {
+        Cart_Fragment fragment = new Cart_Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -31,6 +28,6 @@ public class Register_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_cart, container, false);
     }
 }

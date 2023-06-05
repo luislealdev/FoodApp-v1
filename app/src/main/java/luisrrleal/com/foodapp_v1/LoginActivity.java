@@ -13,13 +13,11 @@ import luisrrleal.com.foodapp_v1.fragments.Register_Fragment;
 public class LoginActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loadFragment(Register_Fragment.newInstance());
-
     }
 
     private void loadFragment(Fragment new_fragment){
