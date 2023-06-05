@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import luisrrleal.com.foodapp_v1.fragments.Cart_Fragment;
@@ -23,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //TO SEE LOGIN (AND REGISTER)
         //setContentView(R.layout.activity_login);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_nav, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     //LOAD FRAGMENTS DEPENDING ON WHAT MENU OPTION ARE

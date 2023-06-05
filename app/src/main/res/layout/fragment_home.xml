@@ -6,13 +6,12 @@ example LinearLayout, and place additional views
 within that LinearLayout.-->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Home_Fragment">
-
+    tools:context=".fragments.Home_Fragment"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,9 +36,9 @@ within that LinearLayout.-->
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="30dp"
-                    android:text="Hola usuario"
+                    android:text="¡Hola usuario!"
                     android:textColor="@color/blur_principal_1"
-                    android:textSize="20sp"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +63,11 @@ within that LinearLayout.-->
                     android:layout_width="315sp"
                     android:layout_height="50sp"
                     android:layout_marginTop="48dp"
-                    android:background="@drawable/search_input"
-                    android:drawableEnd="@android:drawable/ic_menu_search"
+                    android:backgroundTint="@color/white"
+                    android:drawableEnd="@drawable/baseline_search_24"
+                    android:drawableTint="@color/primary_1"
                     android:ems="10"
-                    android:hint="Busca tu comida"
+                    android:hint="¿Qué se te antoja hoy?"
                     android:inputType="text"
                     android:textColor="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
