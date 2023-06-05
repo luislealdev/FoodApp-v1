@@ -4,15 +4,15 @@
     <color name="white">#FFFFFFFF</color>
 
     /*Color palette*/
-    <color name="a">#001155</color>
-    <color name="b">#0044ff</color>
-    <color name="c">#11aaff</color>
-    <color name="d">#99ddcc</color>
-    <color name="e">#ffff00</color>
+    <color name="secondary_2">#001155</color>
+    <color name="secondary_1">#0044ff</color>
+    <color name="primary_1">#11aaff</color>
+    <color name="secondary_3">#99ddcc</color>
+    <color name="principal_2">#ffff00</color>
 
-    <color name="f">#112233</color>
-    <color name="g">#1155aa</color>
-    <color name="h">#4499cc</color>
-    <color name="i">#aaccbb</color>
-    <color name="j">#bbbb33</color>
+    <color name="blur_secondary_2">#112233</color>
+    <color name="blur_secondary_1">#1155aa</color>
+    <color name="blur_principal_1">#4499cc</color>
+    <color name="blur_secondary_3">#aaccbb</color>
+    <color name="blur_primary_2">#bbbb33</color>
 </resources>
