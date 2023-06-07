@@ -47,7 +47,7 @@ public class Popular_food_adapter extends RecyclerView.Adapter<Popular_food_adap
         * */
 
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_info_layout, parent, false);
-        context = parent.getContext();
+        //context = parent.getContext();
         return new ViewHolder(inflate);
     }
 
@@ -55,15 +55,15 @@ public class Popular_food_adapter extends RecyclerView.Adapter<Popular_food_adap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.food_title.setText(cards.get(position).getTitle());
         holder.food_price.setText(cards.get(position).getPrice()+"");
-        int food_img_id = holder.itemView.getResources().getIdentifier(
+        int food_img_id = holder.itemView.getContext().getResources().getIdentifier(
                 cards.get(position).getPicUrl(),
                 "drawable",
                 holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext())
                 .load(food_img_id)
-                .transform(new GranularRoundedCorners(30,30,30,30))
                 .into(holder.food_img);
+        //      .transform(new GranularRoundedCorners(30,30,30,30))
     }
 
     @Override

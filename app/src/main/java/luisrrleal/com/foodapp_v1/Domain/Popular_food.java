@@ -4,8 +4,8 @@ import android.app.Fragment;
 
 import java.io.Serializable;
 //Clase que sirve como una interfaz
-
-public class Popular_food implements Serializable {
+//implements Serializable --> Se lo quite a la clase
+public class Popular_food {
     private String title;
     private String description;
     private String picUrl;

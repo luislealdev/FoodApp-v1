@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter;
 import luisrrleal.com.foodapp_v1.MainActivity;
 import luisrrleal.com.foodapp_v1.R;
 import java.util.ArrayList;
@@ -18,10 +19,9 @@ import luisrrleal.com.foodapp_v1.Domain.Popular_food;
 public class Home_Fragment extends Fragment{
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerView_food;
-
     ArrayList<Popular_food> cards = new ArrayList<>();
+    
 
-    //TODO: ADD METHOD TO RECIEVE AN ARGUMENT (NAME)
     public Home_Fragment() {
 
     }
@@ -35,11 +35,12 @@ public class Home_Fragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerView_setUp();
+        LinearLayoutManager llm = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+
+        food_cards_Setup();
     }
 
-    private void recyclerView_setUp(){
-
+    private void food_cards_Setup(){
         cards.add(new Popular_food(
                 "Hot cakes",
                 "3 Hot cakes hechos con huevo, leche, harina de trigo y mantequilla, " +
@@ -70,8 +71,6 @@ public class Home_Fragment extends Fragment{
                 "comida4.jpg",
                 60.00
         ));
-
-        //recyclerView_food = root
     }
 
     @Override
@@ -79,8 +78,9 @@ public class Home_Fragment extends Fragment{
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.activity_main,container,false);
 
-        //LinearLayout ly = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         recyclerView_food = v.findViewById(R.id.recyclerView_food_id);
+        adapter = new Popular_food_adapter(cards);
+        recyclerView_food.setAdapter(adapter);
 
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
