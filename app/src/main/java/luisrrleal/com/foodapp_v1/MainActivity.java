@@ -13,9 +13,16 @@ import android.view.MenuItem;
 import luisrrleal.com.foodapp_v1.fragments.Cart_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Help_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Home_Fragment;
+import luisrrleal.com.foodapp_v1.fragments.Login_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Profile_Fragment;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    Home_Fragment home_fragment;
+    Login_Fragment login_fragment;
+    Profile_Fragment profile_fragment;
+    Cart_Fragment cart_fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

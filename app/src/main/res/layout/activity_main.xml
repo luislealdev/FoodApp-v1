@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         tools:context=".Activities.HomeActivity">
 
+        <!-- Home Fragment commented
         <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,6 +21,14 @@
             tools:layout="@layout/fragment_home">
 
         </androidx.fragment.app.FragmentContainerView>
+        -->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_x"
+            android:layout_above="@id/bottom_nav"
+        />
 
         <!--BOTTOM NAV DOESNT APPEAR IN PREVIEW BUT IT DOES IN SIMULATION ;)-->
         <com.google.android.material.bottomnavigation.BottomNavigationView

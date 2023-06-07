@@ -23,7 +23,6 @@ public class Popular_food implements Serializable {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -31,7 +30,6 @@ public class Popular_food implements Serializable {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -39,7 +37,6 @@ public class Popular_food implements Serializable {
     public String getPicUrl() {
         return picUrl;
     }
-
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
     }
@@ -47,7 +44,6 @@ public class Popular_food implements Serializable {
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -55,7 +51,6 @@ public class Popular_food implements Serializable {
     public int getNumberinCart() {
         return numberinCart;
     }
-
     public void setNumberinCart(int numberinCart) {
         this.numberinCart = numberinCart;
     }
