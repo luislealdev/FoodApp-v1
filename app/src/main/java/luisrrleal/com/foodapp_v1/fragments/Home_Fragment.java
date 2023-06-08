@@ -80,7 +80,7 @@ public class Home_Fragment extends Fragment{
         View v= inflater.inflate(R.layout.activity_main,container,false);
 
         //LinearLayout ly = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-        recyclerView_food = v.findViewById(R.id.recyclerView_food_id);
+        //recyclerView_food = v.(RecyclerView)findViewById(R.id.recyclerView_food_id);
 
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
