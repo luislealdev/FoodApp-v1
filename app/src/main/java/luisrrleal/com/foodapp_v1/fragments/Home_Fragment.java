@@ -2,20 +2,24 @@ package luisrrleal.com.foodapp_v1.fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import luisrrleal.com.foodapp_v1.MainActivity;
 import luisrrleal.com.foodapp_v1.R;
 import java.util.ArrayList;
 
-import luisrrleal.com.foodapp_v1.Domain.Popular_food;
+//import luisrrleal.com.foodapp_v1.Domain.Popular_food;
 
 public class Home_Fragment extends Fragment{
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerView_food;
-    private MainActivity main;
+
+    //ArrayList<Popular_food> cards = new ArrayList<>();
 
     //TODO: ADD METHOD TO RECIEVE AN ARGUMENT (NAME)
     public Home_Fragment() {
@@ -31,12 +35,11 @@ public class Home_Fragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerView_setUp();
+        //recyclerView_setUp();
     }
 
-    private void recyclerView_setUp(){
+    /*private void recyclerView_setUp(){
 
-        ArrayList<Popular_food> cards = new ArrayList<>();
         cards.add(new Popular_food(
                 "Hot cakes",
                 "3 Hot cakes hechos con huevo, leche, harina de trigo y mantequilla, " +
@@ -69,12 +72,15 @@ public class Home_Fragment extends Fragment{
         ));
 
         //recyclerView_food = root
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //main = new ViewModelProvider(this).get(Popular_food.class);
+        View v= inflater.inflate(R.layout.activity_main,container,false);
+
+        //LinearLayout ly = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+        //recyclerView_food = v.(RecyclerView)findViewById(R.id.recyclerView_food_id);
 
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
