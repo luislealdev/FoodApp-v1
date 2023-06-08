@@ -18,6 +18,12 @@ public class Popular_food_data implements Serializable {
         this.price = price;
     }
 
+    public Popular_food_data(String title, int picUrl, double price) {
+        this.title = title;
+        this.picUrl = picUrl;
+        this.price = price;
+    }
+
     public String getTitle() {
         return title;
     }

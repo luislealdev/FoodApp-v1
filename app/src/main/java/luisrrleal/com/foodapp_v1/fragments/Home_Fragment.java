@@ -13,13 +13,13 @@ import luisrrleal.com.foodapp_v1.MainActivity;
 import luisrrleal.com.foodapp_v1.R;
 import java.util.ArrayList;
 
-import luisrrleal.com.foodapp_v1.Domain.Popular_food;
+//import luisrrleal.com.foodapp_v1.Domain.Popular_food;
 
 public class Home_Fragment extends Fragment{
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerView_food;
 
-    ArrayList<Popular_food> cards = new ArrayList<>();
+    //ArrayList<Popular_food> cards = new ArrayList<>();
 
     //TODO: ADD METHOD TO RECIEVE AN ARGUMENT (NAME)
     public Home_Fragment() {
@@ -35,10 +35,10 @@ public class Home_Fragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerView_setUp();
+        //recyclerView_setUp();
     }
 
-    private void recyclerView_setUp(){
+    /*private void recyclerView_setUp(){
 
         cards.add(new Popular_food(
                 "Hot cakes",
@@ -72,7 +72,7 @@ public class Home_Fragment extends Fragment{
         ));
 
         //recyclerView_food = root
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
