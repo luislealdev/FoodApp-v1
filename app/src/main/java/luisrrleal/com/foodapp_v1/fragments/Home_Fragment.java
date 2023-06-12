@@ -62,9 +62,10 @@ public class Home_Fragment extends Fragment{
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+    /*
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        recyclerView_food = (RecyclerView) getView().findViewById(R.id.recyclerView);
+        recyclerView_food = (RecyclerView) getView().findViewById(R.id.recyclerView_food_id);
         food_cards_Setup();
-    }
+    }*/
 }
