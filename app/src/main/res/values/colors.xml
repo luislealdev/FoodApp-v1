@@ -15,4 +15,6 @@
     <color name="blur_principal_1">#4499cc</color>
     <color name="blur_secondary_3">#aaccbb</color>
     <color name="blur_primary_2">#bbbb33</color>
+
+    <color name="blur_background">#9BD3F4</color>
 </resources>
