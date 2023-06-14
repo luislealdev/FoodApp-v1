@@ -4,19 +4,19 @@ package luisrrleal.com.foodapp_v1.Domain;
 public class Popular_food {
     private String title;
     private String description;
-    private String picUrl;
+    private int picUrl;
     private String price;
     private int numberinCart;
     //private int time;
 
-    public Popular_food(String title, String description, String picUrl, String price) {
+    public Popular_food(String title, String description, int picUrl, String price) {
         this.title = title;
         this.description = description;
         this.picUrl = picUrl;
         this.price = price;
     }
 
-    public Popular_food(String title, String price, String picUrl) {
+    public Popular_food(String title, String price, int picUrl) {
         this.title = title;
         this.picUrl = picUrl;
         this.price = price;
@@ -36,10 +36,10 @@ public class Popular_food {
         this.description = description;
     }
 
-    public String getPicUrl() {
+    public int getPicUrl() {
         return picUrl;
     }
-    public void setPicUrl(String picUrl) {
+    public void setPicUrl(int picUrl) {
         this.picUrl = picUrl;
     }
 
