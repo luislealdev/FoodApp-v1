@@ -23,6 +23,8 @@ public class Sections_adapter extends RecyclerView.Adapter<Sections_viewholder> 
     @Override
     public Sections_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = LayoutInflater.from(parent.getContext());
+        //System.out.println("Info of context: "+li);
+        System.out.println("Class: "+li.getContext().getClass().getName());
         Sections_viewholder res_layout;
         res_layout  = new Sections_viewholder(li.inflate(R.layout.section_item, parent, false));
         return res_layout;

@@ -14,6 +14,7 @@ import luisrrleal.com.foodapp_v1.Domain.Popular_food;
 import luisrrleal.com.foodapp_v1.R;
 
 public class Popular_food_viewholder extends RecyclerView.ViewHolder {
+
     TextView card_title = (TextView)itemView.findViewById(R.id.food_title_txt);
     TextView card_price = (TextView)itemView.findViewById(R.id.food_price_txt);
     RelativeLayout card_img = (RelativeLayout) itemView.findViewById(R.id.card_id);
