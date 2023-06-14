@@ -39,27 +39,28 @@ public class Home_Fragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fill_cards_info();
+        fill_section_info();
     }
 
     public void fill_cards_info(){
         cards.add(new Popular_food(
-                "Hot cakes", "50.00",""
+                "Hot cakes", "50.00",R.drawable.comida1
         ));
         cards.add(new Popular_food(
-                "Caldo de caldo","50.00",""
+                "Caldo de caldo","50.00",R.drawable.comida2
         ));
         cards.add(new Popular_food(
-                "Burritos de guiso","60.00",""
+                "Burritos de guiso","60.00",R.drawable.comida3
         ));
         cards.add(new Popular_food(
-                "Burguir con papas", "60.00",""
+                "Burguir con papas", "60.00",R.drawable.comida4
         ));
     }
 
     public void fill_section_info(){
-        sections.add(new Sections(R.drawable.food, "comida"));
-        sections.add(new Sections(R.drawable.drinks, "bebidas"));
-        sections.add(new Sections(R.drawable.snacks, "snacks"));
+        sections.add(new Sections(R.drawable.food, "Comida"));
+        sections.add(new Sections(R.drawable.drinks, "Bebidas"));
+        sections.add(new Sections(R.drawable.snacks, "Snacks"));
     }
 
     @Override
