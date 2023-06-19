@@ -7,16 +7,16 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="250sp"
-        android:layout_margin="20sp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/food_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/comida1"/>
+            android:background="@drawable/comida1" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,17 +25,25 @@
             android:layout_marginTop="190sp">
 
             <TextView
+                android:id="@+id/food_title_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="5sp"
-                android:text="Información de la comida" />
+                android:text="Información de la comida"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/food_price_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="30sp"
-                android:text="$$$" />
+                android:text="$$$"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

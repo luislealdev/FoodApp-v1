@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter;
+import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter2;
 import luisrrleal.com.foodapp_v1.Adapter.Sections_adapter;
 import luisrrleal.com.foodapp_v1.Domain.Sections;
 import luisrrleal.com.foodapp_v1.MainActivity;
@@ -82,5 +83,11 @@ public class Home_Fragment extends Fragment{
         LinearLayoutManager rv_layoutManager2 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.HORIZONTAL,false);
         recyclerView_food.setLayoutManager(rv_layoutManager2);
         recyclerView_food.setAdapter(new Popular_food_adapter(cards));
+
+        //Get the recycelrView of popular food and render it in the fragment
+        recyclerView_food = (RecyclerView) getView().findViewById(R.id.recyclerView_food_id2);
+        LinearLayoutManager rv_layoutManager3 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
+        recyclerView_food.setLayoutManager(rv_layoutManager3);
+        recyclerView_food.setAdapter(new Popular_food_adapter2(cards));
     }
 }

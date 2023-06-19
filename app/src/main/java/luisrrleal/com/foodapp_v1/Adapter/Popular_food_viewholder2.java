@@ -11,14 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import luisrrleal.com.foodapp_v1.Domain.Popular_food;
 import luisrrleal.com.foodapp_v1.R;
 
-public class Popular_food_viewholder extends RecyclerView.ViewHolder {
+public class Popular_food_viewholder2 extends RecyclerView.ViewHolder {
 
-    TextView card_title = (TextView)itemView.findViewById(R.id.food_title_txt);
-    TextView card_price = (TextView)itemView.findViewById(R.id.food_price_txt);
-    RelativeLayout card_img = (RelativeLayout) itemView.findViewById(R.id.card_id);
-    //ImageView card_img = (ImageView) itemView.findViewById(R.id.food_image_view);
+    TextView card_title = (TextView)itemView.findViewById(R.id.food_title_txt2);
+    TextView card_price = (TextView)itemView.findViewById(R.id.food_price_txt2);
+    ImageView card_img = (ImageView) itemView.findViewById(R.id.food_image_view);
 
-    public Popular_food_viewholder(@NonNull View itemView) {
+    public Popular_food_viewholder2(@NonNull View itemView) {
         super(itemView);
     }
 
