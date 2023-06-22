@@ -12,6 +12,7 @@
         android:layout_marginHorizontal="15sp"
         android:background="@color/blur_background"
         app:cardCornerRadius="20dp"
+        android:padding="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

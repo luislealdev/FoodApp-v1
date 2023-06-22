@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="20sp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainSection"
+        android:paddingHorizontal="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".fragments.Home_Fragment"
-        >
+        tools:context=".fragments.Home_Fragment">
 
         <TextView
             android:id="@+id/textView"
@@ -45,7 +45,7 @@
             android:id="@+id/editTextText"
             android:layout_width="315sp"
             android:layout_height="50sp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="20dp"
             android:padding="10sp"
             android:backgroundTint="@color/white"
             android:drawableEnd="@drawable/baseline_search_24"
@@ -61,11 +61,20 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <RelativeLayout
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="8sp"
+        android:layout_marginVertical="10sp"
+        android:layout_below="@id/mainSection"
+        android:background="#EEEEEE"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/section_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170sp">
+        android:paddingHorizontal="20sp"
+        android:layout_below="@id/space">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_sections_id"
@@ -79,11 +88,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <ScrollView
+        android:layout_below="@id/section_buttons_container"
+        android:paddingHorizontal="10sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="260sp"
         tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
@@ -127,5 +136,5 @@
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout>
+</RelativeLayout>
 
