@@ -116,7 +116,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="20sp"
         android:layout_marginEnd="20sp"
-        android:layout_marginBottom="40sp"
+        android:layout_marginBottom="10sp"
         android:backgroundTint="@color/primary_1"
         android:foregroundGravity="bottom"
         app:cardCornerRadius="20sp">
