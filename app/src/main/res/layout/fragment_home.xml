@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="20sp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainSection"
+        android:paddingHorizontal="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".fragments.Home_Fragment"
-        >
+        tools:context=".fragments.Home_Fragment">
 
         <TextView
             android:id="@+id/textView"
@@ -43,15 +43,16 @@
 
         <EditText
             android:id="@+id/editTextText"
-            android:layout_width="315sp"
+            android:layout_width="match_parent"
             android:layout_height="50sp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="20dp"
             android:padding="10sp"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/search_input"
             android:drawableEnd="@drawable/baseline_search_24"
-            android:drawableTint="@color/primary_1"
+            android:drawableTint="@color/white"
             android:ems="10"
             android:hint="¿Qué se te antoja hoy?"
+            android:textColorHint="@color/white"
             android:inputType="text"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,16 +62,25 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <RelativeLayout
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="6sp"
+        android:layout_marginVertical="20sp"
+        android:layout_below="@id/mainSection"
+        android:background="#EEEEEE"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/section_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180sp">
+        android:paddingHorizontal="10sp"
+        android:layout_below="@id/space">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_sections_id"
             android:layout_width="match_parent"
-            android:layout_height="80sp"
+            android:layout_height="70sp"
             android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -79,32 +89,47 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Constraint Layout for the Popular Food Section-->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:paddingHorizontal="20sp"
+        android:layout_below="@id/section_buttons_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280sp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Platillos populares"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_food_id"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Platillos populares"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_food_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_food_id2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_id" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
 

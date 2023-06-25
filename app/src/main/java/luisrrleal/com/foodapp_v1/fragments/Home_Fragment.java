@@ -10,20 +10,18 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter;
+import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter2;
 import luisrrleal.com.foodapp_v1.Adapter.Sections_adapter;
-import luisrrleal.com.foodapp_v1.Domain.Sections;
-import luisrrleal.com.foodapp_v1.MainActivity;
+import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 import java.util.ArrayList;
-
-import luisrrleal.com.foodapp_v1.Domain.Popular_food;
 
 public class Home_Fragment extends Fragment{
     private RecyclerView recyclerView_food;
     private RecyclerView recyclerView_sections;
 
-    ArrayList<Sections> sections = new ArrayList<>();
-    ArrayList<Popular_food> cards = new ArrayList<>();
+    ArrayList<Data_Provider> sections = new ArrayList<>();
+    ArrayList<Data_Provider> cards = new ArrayList<>();
 
     public Home_Fragment() {
 
@@ -43,24 +41,24 @@ public class Home_Fragment extends Fragment{
     }
 
     public void fill_cards_info(){
-        cards.add(new Popular_food(
+        cards.add(new Data_Provider(
                 "Hot cakes", "50.00",R.drawable.comida1
         ));
-        cards.add(new Popular_food(
+        cards.add(new Data_Provider(
                 "Caldo de caldo","50.00",R.drawable.comida2
         ));
-        cards.add(new Popular_food(
+        cards.add(new Data_Provider(
                 "Burritos de guiso","60.00",R.drawable.comida3
         ));
-        cards.add(new Popular_food(
+        cards.add(new Data_Provider(
                 "Burguir con papas", "60.00",R.drawable.comida4
         ));
     }
 
     public void fill_section_info(){
-        sections.add(new Sections(R.drawable.food, "Comida"));
-        sections.add(new Sections(R.drawable.drinks, "Bebidas"));
-        sections.add(new Sections(R.drawable.snacks, "Snacks"));
+        sections.add(new Data_Provider("Comida",R.drawable.food));
+        sections.add(new Data_Provider("Bebidas",R.drawable.drinks));
+        sections.add(new Data_Provider("Snacks",R.drawable.snacks));
     }
 
     @Override
@@ -82,5 +80,11 @@ public class Home_Fragment extends Fragment{
         LinearLayoutManager rv_layoutManager2 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.HORIZONTAL,false);
         recyclerView_food.setLayoutManager(rv_layoutManager2);
         recyclerView_food.setAdapter(new Popular_food_adapter(cards));
+
+        //Get the recycelrView of popular food and render it in the fragment
+        recyclerView_food = (RecyclerView) getView().findViewById(R.id.recyclerView_food_id2);
+        LinearLayoutManager rv_layoutManager3 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
+        recyclerView_food.setLayoutManager(rv_layoutManager3);
+        recyclerView_food.setAdapter(new Popular_food_adapter2(cards));
     }
 }

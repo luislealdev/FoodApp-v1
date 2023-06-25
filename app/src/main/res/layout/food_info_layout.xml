@@ -3,25 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="150sp"
-    android:layout_height="wrap_content"
-    android:alpha="0.9">
+    android:layout_width="160sp"
+    android:layout_height="120sp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:id="@+id/food_card_horizontal"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="5dp">
+
+        <ImageView
+            android:id="@+id/food_image_view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/comida2" />
 
         <RelativeLayout
-            android:id="@+id/card_id"
-            android:layout_width="200sp"
-            android:layout_height="120sp"
-            android:background="@drawable/comida1"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/food_title_txt"
@@ -42,13 +45,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/food_title_txt"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="$Precio del platillo"
+                android:text="$$$"
                 android:textColor="@color/white"
-                android:textStyle="bold"/>
-
+                android:textStyle="bold" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

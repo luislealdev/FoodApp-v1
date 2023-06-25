@@ -1,16 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.Cart_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title_cart_activity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HELLO THIS IS CART FRAGMENT"
-        android:textSize="30dp"
-        />
+        android:layout_height="wrap_content"
+        android:background="@color/primary_1"
+        android:padding="10sp"
+        android:text="Carrito"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_orders"
+        android:layout_below="@id/title_cart_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"/>
+
+    <LinearLayout
+        android:layout_below="@id/recyclerView_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_radius"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginTop="50sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="#EEEEEE"
+                android:padding="6sp"
+                android:text="Comida"/>
+
+            <TextView
+                android:gravity="end"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="#EEEEEE"
+                android:padding="6sp"
+                android:text="$$$"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="#EEEEEE"
+                android:padding="6sp"
+                android:text="Comida"/>
+
+            <TextView
+                android:gravity="end"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="#EEEEEE"
+                android:padding="6sp"
+                android:text="$$$"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="#EEEEEE"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:padding="6sp"
+                android:text="Total"/>
+
+            <TextView
+                android:gravity="end"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="#EEEEEE"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:padding="6sp"
+                android:text="$$$"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="10sp"
+        android:backgroundTint="@color/primary_1"
+        android:foregroundGravity="bottom"
+        app:cardCornerRadius="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Ordenar"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
