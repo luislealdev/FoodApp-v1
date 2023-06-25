@@ -1,5 +1,6 @@
 package luisrrleal.com.foodapp_v1.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import luisrrleal.com.foodapp_v1.Domain.Sections;
+import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 
 public class Sections_adapter extends RecyclerView.Adapter<Sections_viewholder> {
 
-    ArrayList<Sections> sectionsCards;
+    ArrayList<Data_Provider> sectionsCards;
 
-    public Sections_adapter(ArrayList<Sections> sectionsCards) {
+    public Sections_adapter(ArrayList<Data_Provider> sectionsCards) {
         this.sectionsCards = sectionsCards;
     }
 
@@ -25,8 +26,6 @@ public class Sections_adapter extends RecyclerView.Adapter<Sections_viewholder> 
     @Override
     public Sections_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = LayoutInflater.from(parent.getContext());
-        //System.out.println("Info of context: "+li);
-        System.out.println("Class: "+li.getContext().getClass().getName());
         Sections_viewholder res_layout;
         res_layout  = new Sections_viewholder(li.inflate(R.layout.section_item, parent, false));
         return res_layout;
@@ -39,6 +38,7 @@ public class Sections_adapter extends RecyclerView.Adapter<Sections_viewholder> 
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "Evento", Toast.LENGTH_SHORT).show();
+                Context context = v.getContext();
             }
         });
     }

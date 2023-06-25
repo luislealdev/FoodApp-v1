@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import luisrrleal.com.foodapp_v1.Domain.Sections;
+import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -19,8 +19,8 @@ public class Sections_viewholder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public void renderSection(Sections section_item){
-        sectionName_tv.setText(section_item.getSectionName());
-        sectionIcon_iv.setImageResource(section_item.getSectionIcon());
+    public void renderSection(Data_Provider section_item){
+        sectionName_tv.setText(section_item.getCardTitle());
+        sectionIcon_iv.setImageResource(section_item.getCardImgResource());
     }
 }

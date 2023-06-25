@@ -5,13 +5,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import luisrrleal.com.foodapp_v1.Domain.Popular_food;
+
+import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 
 public class Popular_food_adapter extends RecyclerView.Adapter<Popular_food_viewholder> {
-    ArrayList<Popular_food> popular_food_list;
+    ArrayList<Data_Provider> popular_food_list;
 
-    public Popular_food_adapter(ArrayList<Popular_food> popular_food_list) {
+    public Popular_food_adapter(ArrayList<Data_Provider> popular_food_list) {
         this.popular_food_list = popular_food_list;
     }
 
