@@ -34,7 +34,8 @@
             app:itemActiveIndicatorStyle="@color/white"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
-            app:menu="@menu/bottom_nav"></com.google.android.material.bottomnavigation.BottomNavigationView>
+            app:menu="@menu/bottom_nav">
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

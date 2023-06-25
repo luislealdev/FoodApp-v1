@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+        <!--
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="45dp"
@@ -40,7 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.029" />
-
+-->
         <EditText
             android:id="@+id/editTextText"
             android:layout_width="match_parent"
@@ -62,6 +63,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--
     <RelativeLayout
         android:id="@+id/space"
         android:layout_width="match_parent"
@@ -69,13 +71,15 @@
         android:layout_marginVertical="20sp"
         android:layout_below="@id/mainSection"
         android:background="#EEEEEE"/>
+-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/section_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10sp"
-        android:layout_below="@id/space">
+        android:paddingTop="30dp"
+        android:layout_below="@id/mainSection">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_sections_id"
