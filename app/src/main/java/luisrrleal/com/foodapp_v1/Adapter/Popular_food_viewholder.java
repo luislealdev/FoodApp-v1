@@ -15,8 +15,7 @@ public class Popular_food_viewholder extends RecyclerView.ViewHolder {
 
     TextView card_title = (TextView)itemView.findViewById(R.id.food_title_txt);
     TextView card_price = (TextView)itemView.findViewById(R.id.food_price_txt);
-    RelativeLayout card_img = (RelativeLayout) itemView.findViewById(R.id.card_id);
-    //ImageView card_img = (ImageView) itemView.findViewById(R.id.food_image_view);
+    ImageView card_img = (ImageView) itemView.findViewById(R.id.food_image_view1);
 
     public Popular_food_viewholder(@NonNull View itemView) {
         super(itemView);
