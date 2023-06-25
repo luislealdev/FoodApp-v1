@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
@@ -12,6 +13,7 @@ import luisrrleal.com.foodapp_v1.R;
 
 public class Popular_food_viewholder2 extends RecyclerView.ViewHolder {
 
+    CardView food_card2 = (CardView)itemView.findViewById(R.id.food_card_vertical);
     TextView card_title = (TextView)itemView.findViewById(R.id.food_title_txt2);
     TextView card_price = (TextView)itemView.findViewById(R.id.food_price_txt2);
     ImageView card_img = (ImageView) itemView.findViewById(R.id.food_image_view);

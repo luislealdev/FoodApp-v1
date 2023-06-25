@@ -27,4 +27,8 @@ public class Popular_food_viewholder extends RecyclerView.ViewHolder {
         card_price.setText(popular_food_item.getCardPrice());
         card_img.setBackgroundResource(popular_food_item.getCardImgResource());
     }
+    public  int getIndexCard(){
+        //return itemView
+        return 0;
+    }
 }

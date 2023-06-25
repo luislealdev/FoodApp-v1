@@ -1,12 +1,15 @@
 package luisrrleal.com.foodapp_v1.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
+import luisrrleal.com.foodapp_v1.InfoFoodActivity;
 import luisrrleal.com.foodapp_v1.R;
 
 public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_viewholder2> {
@@ -28,6 +31,23 @@ public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_vie
     @Override
     public void onBindViewHolder(@NonNull Popular_food_viewholder2 holder, int position) {
         holder.render_card(popular_food_list.get(position));
+        int indexCard = holder.getAdapterPosition();
+        setClickEvent(holder, indexCard);
+    }
+
+    public void setClickEvent(Popular_food_viewholder2 holder, int indexCard){
+
+        holder.food_card2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), InfoFoodActivity.class);
+                i.putExtra("sentTitle", popular_food_list.get(indexCard).getCardTitle());
+                i.putExtra("sentPrice", popular_food_list.get(indexCard).getCardPrice());
+                i.putExtra("sentImg", popular_food_list.get(indexCard).getCardImgResource());
+
+                v.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override
