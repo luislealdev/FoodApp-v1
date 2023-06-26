@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingHorizontal="20sp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="5sp"
     android:layout_width="match_parent"
-    android:layout_height="150sp"
+    android:layout_height="100sp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginVertical="10sp"
         app:cardCornerRadius="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,9 +26,10 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/cart_img_id"
                     android:layout_width="100sp"
                     android:layout_height="80sp"
-                    android:background="@drawable/comida2"/>
+                    android:background="@drawable/comida2" />
 
             </RelativeLayout>
 
@@ -37,34 +40,37 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_marginTop="30sp"
+                    android:id="@+id/cart_title_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingVertical="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Platillo de comida"/>
+                    android:text="Platillo de comida"
+                    android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/cart_price_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="$$$"/>
+                    android:text="$$$"
+                    android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/cart_num_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="num de producto"/>
+                    android:text="1"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
 
             <Button
-                android:layout_alignParentEnd="true"
-                android:background="@color/primary_1"
                 android:layout_width="35sp"
                 android:layout_height="match_parent"
-                android:drawableEnd="@android:drawable/ic_menu_send"/>
+                android:layout_alignParentEnd="true"
+                android:background="@color/primary_1"
+                android:drawableEnd="@android:drawable/ic_menu_close_clear_cancel"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
