@@ -21,7 +21,7 @@
             android:layout_marginTop="30dp"
             android:text="¡Hola usuario!"
             android:textColor="@color/blur_principal_1"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +43,7 @@
             app:layout_constraintVertical_bias="0.029" />
 -->
         <EditText
+            android:autofillHints="none"
             android:id="@+id/editTextText"
             android:layout_width="match_parent"
             android:layout_height="50sp"
@@ -52,7 +53,7 @@
             android:drawableEnd="@drawable/baseline_search_24"
             android:drawableTint="@color/white"
             android:ems="10"
-            android:hint="¿Qué se te antoja hoy?"
+            android:hint="@string/qu_se_te_antoja_hoy"
             android:textColorHint="@color/white"
             android:inputType="text"
             android:textColor="#FFFFFF"
@@ -107,7 +108,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Platillos populares"
+                android:text="@string/platillos_populares"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

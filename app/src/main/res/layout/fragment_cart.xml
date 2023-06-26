@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/primary_1"
         android:padding="10sp"
-        android:text="Carrito"
+        android:text="@string/carrito"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -45,7 +45,7 @@
                 android:textColor="@color/black"
                 android:background="#EEEEEE"
                 android:padding="6sp"
-                android:text="Comida"/>
+                android:text="@string/comida"/>
 
             <TextView
                 android:gravity="end"
@@ -67,7 +67,7 @@
                 android:textColor="@color/black"
                 android:background="#EEEEEE"
                 android:padding="6sp"
-                android:text="Comida"/>
+                android:text="@string/comida"/>
 
             <TextView
                 android:gravity="end"
@@ -91,7 +91,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:padding="6sp"
-                android:text="Total"/>
+                android:text="@string/total"/>
 
             <TextView
                 android:gravity="end"
@@ -125,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Ordenar"
+            android:text="@string/ordenar"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
