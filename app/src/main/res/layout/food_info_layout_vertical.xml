@@ -36,7 +36,6 @@
                 android:text="@string/informaci_n_de_la_comida"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
