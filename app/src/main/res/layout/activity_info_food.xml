@@ -15,8 +15,11 @@
 
         <ImageView
             android:id="@+id/back_button"
-            android:layout_width="50sp"
-            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             app:srcCompat="@drawable/baseline_arrow_back_24"
             app:tint="@color/white" />
     </RelativeLayout>
@@ -46,10 +49,12 @@
                 android:layout_height="wrap_content"
                 android:text="Consomé de pollo"
                 android:textSize="25sp"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/food_price_id"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -86,17 +91,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Instrucciones especiales"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="100sp"
             android:layout_marginTop="10sp"
             android:background="#EEEEEE"
             android:gravity="start"
             android:textColorHint="@color/black"
-            android:hint="agrega una nota (salsa adicional, sincebolla, etc..)"
+            android:hint="Agrega una nota (salsa adicional, sincebolla, etc..)"
             android:textSize="15sp" />
 
         <androidx.cardview.widget.CardView

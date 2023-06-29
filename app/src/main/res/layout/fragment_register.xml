@@ -26,7 +26,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_marginLeft="20dp"
+                android:contentDescription="@string/atr_s"
+                android:layout_marginStart="20dp"
                 android:id="@+id/logo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -40,8 +41,8 @@
                 android:id="@+id/welcome_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crear cuenta"
-                android:textSize="25dp"
+                android:text="@string/reg_strate_ahora"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,17 +52,19 @@
                 android:id="@+id/helper_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crea una nueva cuenta"
+                android:text="@string/crea_una_nueva_cuenta"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
 
             <EditText
+                android:autofillHints="name"
+                android:height="50dp"
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:hint="correo*"
+                android:hint="@string/nombre"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,11 +72,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/helper_text" />
 
             <EditText
+                android:autofillHints="name"
+                android:height="50dp"
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:hint="correo*"
+                android:hint="@string/correo_institucional"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,23 +86,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <EditText
+                android:autofillHints="phone"
+                android:height="50dp"
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:hint="correo*"
-                android:inputType="textEmailAddress"
+                android:hint="@string/tel_fono"
+                android:inputType="phone"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email" />
 
             <EditText
+                android:autofillHints="password"
+                android:height="50dp"
                 android:id="@+id/password1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:hint="contraseña*"
+                android:hint="@string/contrase_a"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
@@ -107,20 +116,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/phone" />
 
             <EditText
+                android:autofillHints="password"
                 android:id="@+id/password2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="contraseña*"
+                android:hint="@string/repetir_contrase_a"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password1" />
+                app:layout_constraintTop_toBottomOf="@+id/password1"
+                android:layout_height="50dp"/>
 
             <Button
+                android:textColor="@color/white"
                 android:id="@+id/register_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,7 +139,7 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/primary_1"
                 android:enabled="true"
-                android:text="Crear cuenta"
+                android:text="@string/crear_cuenta"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/password2" />
@@ -146,15 +157,15 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¿Ya tienes una cuenta?"
+                    android:text="@string/ya_tienes_una_cuenta"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Iniciar sesión"
+                    android:text="@string/iniciar_sesi_n"
                     android:textColor="@color/primary_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
