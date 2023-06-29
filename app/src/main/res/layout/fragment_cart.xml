@@ -20,21 +20,33 @@
         android:textStyle="bold"
         tools:ignore="TextContrastCheck" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_orders"
+    <ScrollView
         android:layout_below="@id/title_cart_activity"
+        android:layout_above="@id/dataContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"/>
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_orders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/title_cart_activity"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp" />
+    </ScrollView>
+
 
     <LinearLayout
-        android:layout_below="@id/recyclerView_orders"
+        android:id="@+id/dataContainer"
+        android:layout_above="@id/orderButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border_radius"
         android:orientation="vertical"
-        android:layout_marginHorizontal="30sp"
-        android:layout_marginTop="50sp">
+        android:layout_marginHorizontal="30sp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,8 +120,9 @@
 
 
     </LinearLayout>
-
-    <androidx.cardview.widget.CardView
+    
+    <Button
+        android:id="@+id/orderButton"
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_alignParentBottom="true"
@@ -117,8 +130,11 @@
         android:layout_marginTop="20sp"
         android:layout_marginEnd="20sp"
         android:layout_marginBottom="10sp"
+        android:background="@drawable/search_input"
         android:backgroundTint="@color/primary_1"
         android:foregroundGravity="bottom"
+        android:text="Ordenar"
+        android:textColor="@color/white" />
         app:cardCornerRadius="20sp">
 
         <TextView
@@ -129,6 +145,4 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-    </androidx.cardview.widget.CardView>
 </RelativeLayout>
