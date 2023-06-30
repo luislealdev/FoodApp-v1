@@ -26,6 +26,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:contentDescription="@string/icon"
                 android:id="@+id/logo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -40,8 +41,8 @@
                 android:id="@+id/welcome_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bienvenido"
-                android:textSize="25dp"
+                android:text="@string/bienvenido"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,17 +52,18 @@
                 android:id="@+id/helper_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inicia sesión para continuar"
+                android:text="@string/inicia_sesi_n_para_continuar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
 
             <EditText
-                android:id="@+id/username"
+                android:autofillHints="emailAddress"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:hint="correo*"
+                android:hint="@string/correo_institucional"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,24 +71,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/helper_text" />
 
             <EditText
+                android:autofillHints="password"
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:hint="contraseña*"
+                android:hint="@string/contrase_a"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username" />
+                app:layout_constraintTop_toBottomOf="@+id/email" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="¿Olvidaste tu contraseña?"
+                android:layout_marginEnd="20dp"
+                android:text="@string/olvidaste_tu_contrase_a"
                 android:textColor="@color/primary_1"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/login"
@@ -94,6 +97,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/password" />
 
             <Button
+                android:textColor="@color/white"
                 android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +105,7 @@
                 android:layout_marginTop="70dp"
                 android:backgroundTint="@color/primary_1"
                 android:enabled="true"
-                android:text="Iniciar sesión"
+                android:text="@string/iniciar_sesi_n"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/password" />
@@ -119,16 +123,16 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¿No tienes una cuenta?"
+                    android:text="@string/no_tienes_una_cuenta"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/create_account"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crea una cuenta"
+                    android:text="@string/crea_una_cuenta"
                     android:textColor="@color/primary_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"

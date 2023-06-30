@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:contentDescription="@string/food_image"
             android:id="@+id/food_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,18 +31,18 @@
                 android:id="@+id/food_title_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
+                android:layout_marginStart="20sp"
                 android:layout_marginTop="5sp"
-                android:text="Información de la comida"
-                android:textColor="@color/white"
+                android:text="@string/informaci_n_de_la_comida"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/food_price_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
+                android:layout_marginStart="20sp"
                 android:layout_marginTop="30sp"
                 android:text="$$$"
                 android:textColor="@color/white"

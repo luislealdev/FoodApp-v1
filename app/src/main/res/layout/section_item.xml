@@ -25,8 +25,9 @@
             android:paddingVertical="5sp">
 
             <ImageView
+                android:contentDescription="@string/icon"
                 android:id="@+id/sectionIcon_iv_id"
-                android:layout_width="20sp"
+                android:layout_width="20dp"
                 android:layout_height="20sp"
                 android:layout_gravity="center"
                 android:layout_weight="10"
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="Snack´s"
+                android:text="@string/snack_s"
                 android:textColor="@color/blur_secondary_1"
                 android:textStyle="bold" />
         </LinearLayout>

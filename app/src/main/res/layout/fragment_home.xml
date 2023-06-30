@@ -41,6 +41,7 @@
             app:layout_constraintVertical_bias="0.029" />
 
         <EditText
+            android:autofillHints="none"
             android:id="@+id/editTextText"
             android:layout_width="match_parent"
             android:layout_height="50sp"
@@ -50,7 +51,7 @@
             android:drawableEnd="@drawable/baseline_search_24"
             android:drawableTint="@color/white"
             android:ems="10"
-            android:hint="¿Qué se te antoja hoy?"
+            android:hint="@string/qu_se_te_antoja_hoy"
             android:textColorHint="@color/white"
             android:inputType="text"
             android:textColor="#FFFFFF"
@@ -61,6 +62,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--
     <RelativeLayout
         android:id="@+id/space"
         android:layout_width="match_parent"
@@ -68,6 +70,7 @@
         android:layout_marginVertical="20sp"
         android:layout_below="@id/mainSection"
         android:background="#EEEEEE"/>
+-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/section_buttons_container"
@@ -108,6 +111,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/platillos_populares"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_food_id"
                 android:layout_width="match_parent"
