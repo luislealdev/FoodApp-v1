@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainSection"
-        android:paddingHorizontal="20sp"
+        android:paddingHorizontal="@dimen/containers_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragments.Home_Fragment">
@@ -21,21 +21,20 @@
             android:layout_marginTop="30dp"
             android:text="¡Hola usuario!"
             android:textColor="@color/blur_principal_1"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            style="@style/AppTheme.TextView_TitleContainer_styles"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
+            android:src="@drawable/perrito_usuario"
             android:contentDescription="profile_picture"
-            android:src="@drawable/baseline_person_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -74,7 +73,7 @@
         android:id="@+id/section_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10sp"
+        android:paddingHorizontal="@dimen/containers_padding"
         android:layout_below="@id/space">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -90,18 +89,19 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/textViewScroll"
         android:layout_below="@id/section_buttons_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        style="@style/AppTheme.TextView_TitleContainer_styles"
         android:layout_marginTop="10sp"
         android:layout_marginLeft="20sp"
         android:text="Platillos populares"/>
 
     <ScrollView
-        android:paddingHorizontal="20sp"
+        android:paddingHorizontal="@dimen/containers_padding"
         android:layout_marginTop="20sp"
-        android:layout_below="@id/section_buttons_container"
+        android:layout_below="@id/textViewScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

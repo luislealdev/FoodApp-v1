@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/food_img_id"
         android:orientation="vertical"
-        android:padding="10sp">
+        android:padding="@dimen/containers_padding">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/space"
         android:orientation="vertical"
-        android:padding="20sp">
+        android:padding="@dimen/containers_padding">
 
         <TextView
             android:layout_width="match_parent"
