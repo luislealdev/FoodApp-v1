@@ -123,12 +123,4 @@
         android:textColor="@color/white"
         app:cardCornerRadius="20sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/ordenar"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 </RelativeLayout>

@@ -65,12 +65,13 @@
 
 
             <Button
-                android:layout_width="35sp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:background="@color/primary_1"
-                android:drawableEnd="@android:drawable/ic_menu_close_clear_cancel"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+              android:id="@+id/delete_cartItem_id"
+              android:layout_width="35sp"
+              android:layout_height="match_parent"
+              android:layout_alignParentEnd="true"
+              android:background="@color/primary_1"
+              android:drawableEnd="@android:drawable/ic_menu_close_clear_cancel"
+              tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
