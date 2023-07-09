@@ -60,11 +60,6 @@ public class Cart_Product_adapter extends RecyclerView.Adapter<Cart_Product_view
     }
 
     @Override
-    public void rv_itemClick_event(int position, Cart_Product_adapter cards_adapater) {
-
-    }
-
-    @Override
     public void rv_itemClick_event(int position) {
         cart_products.remove(position);
         this.notifyItemRemoved(position);

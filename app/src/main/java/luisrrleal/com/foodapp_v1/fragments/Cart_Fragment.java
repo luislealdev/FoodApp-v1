@@ -18,8 +18,7 @@ import luisrrleal.com.foodapp_v1.Adapter.Cart_Product_adapter;
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 
-public class Cart_Fragment extends Fragment implements RV_Item_ClickListener{
-    RV_Item_ClickListener listener;
+public class Cart_Fragment extends Fragment{
     ArrayList<Data_Provider> cards = new ArrayList<>();
     private RecyclerView recyclerView_products_added;
 
@@ -64,11 +63,4 @@ public class Cart_Fragment extends Fragment implements RV_Item_ClickListener{
         recyclerView_products_added.setAdapter(cards_adapater);
     }
 
-    @Override
-    public void rv_itemClick_event(int position, Cart_Product_adapter cards_adapater) {
-    }
-    @Override
-    public void rv_itemClick_event(int position) {
-        Toast.makeText(this.getContext(), "te equivocaste de contexto", Toast.LENGTH_SHORT).show();
-    }
 }
