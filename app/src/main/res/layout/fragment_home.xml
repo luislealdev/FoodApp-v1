@@ -42,7 +42,8 @@
 
         <EditText
             android:autofillHints="none"
-            android:id="@+id/editTextText"
+            android:id="@+id/search_editText"
+            android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_marginTop="20dp"
@@ -92,7 +93,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <!-- <ScrollView
         android:paddingHorizontal="@dimen/containers_padding"
         android:layout_marginTop="20sp"
         android:layout_below="@id/section_buttons_container"
@@ -132,7 +133,29 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </ScrollView> -->
+    <TextView
+      android:paddingHorizontal="@dimen/containers_padding"
+      android:id="@+id/textView4"
+      android:layout_below="@id/section_buttons_container"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/platillos_populares"
+      android:layout_marginTop="16sp"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:paddingHorizontal="@dimen/containers_padding"
+      android:id="@+id/recyclerView_food_id2"
+      android:layout_below="@id/textView4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      />
 
 </RelativeLayout>
 
