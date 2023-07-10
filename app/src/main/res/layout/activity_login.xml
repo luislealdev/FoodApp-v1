@@ -5,8 +5,7 @@
   android:id="@+id/container"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".fragments.Login_Fragment"
-  >
+  tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
       android:id="@+id/cardView"
@@ -27,7 +26,7 @@
 
             <ImageView
               android:contentDescription="@string/icon"
-              android:id="@+id/logo"
+              android:id="@+id/getBack_image"
               android:layout_width="100dp"
               android:layout_height="100dp"
               android:layout_marginTop="25dp"
@@ -46,7 +45,7 @@
               android:textStyle="bold"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/logo" />
+              app:layout_constraintTop_toBottomOf="@+id/getBack_image" />
 
             <TextView
               android:id="@+id/helper_text"
@@ -59,7 +58,7 @@
 
             <EditText
               android:autofillHints="emailAddress"
-              android:id="@+id/email"
+              android:id="@+id/emailLogin"
               android:layout_width="match_parent"
               android:layout_height="50dp"
               android:layout_margin="20dp"
@@ -72,7 +71,7 @@
 
             <EditText
               android:autofillHints="password"
-              android:id="@+id/password"
+              android:id="@+id/passwordLogin"
               android:layout_width="match_parent"
               android:layout_height="50dp"
               android:layout_margin="20dp"
@@ -83,7 +82,7 @@
               android:selectAllOnFocus="true"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/email" />
+              app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
             <TextView
               android:layout_width="wrap_content"
@@ -94,10 +93,9 @@
               android:textStyle="bold"
               app:layout_constraintBottom_toTopOf="@+id/login"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/password" />
+              app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
             <Button
-              android:textColor="@color/white"
               android:id="@+id/login"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -105,10 +103,12 @@
               android:layout_marginTop="70dp"
               android:backgroundTint="@color/primary_1"
               android:enabled="true"
+              android:onClick="login"
               android:text="@string/iniciar_sesi_n"
+              android:textColor="@color/white"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/password" />
+              app:layout_constraintTop_toBottomOf="@id/passwordLogin" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
               android:id="@+id/constraintLayout"

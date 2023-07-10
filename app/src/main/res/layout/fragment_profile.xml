@@ -21,7 +21,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/getBack_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="25dp"
@@ -37,13 +37,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Luis Leal"
-            app:layout_constraintBottom_toBottomOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/getBack_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
+            app:layout_constraintTop_toBottomOf="@+id/getBack_image" />
 
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/emailLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="21030076@itcelaya.edu.mx"
@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email" />
+            app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
