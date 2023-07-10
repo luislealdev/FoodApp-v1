@@ -1,10 +1,13 @@
 package luisrrleal.com.foodapp_v1;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,7 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     EditText name, phone, email, password, confirmPassword;
     ImageView getBack_button;
     FirebaseAuth userAuth;
-    DocumentReference document  = FirebaseFirestore.getInstance().document("/users");
+    FirebaseFirestore document = FirebaseFirestore.getInstance();
+    //DocumentReference document = FirebaseFirestore.getInstance().document("appData/users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,32 +67,51 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
         }else{
             if(userPassword.equals(userConfirmPassword)){
+
                 Map<String, Object> user = new HashMap<>();
                 user.put("name", userName);
                 user.put("phone", userPhone);
                 user.put("email", userEmail);
                 user.put("password", userPassword);
 
-                document.set(user).
-                        addOnSuccessListener(new OnSuccessListener<Void>() {
+                document.collection("users")
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(RegisterActivity.this, "Usuario reistrado con éxito", Toast.LENGTH_SHORT).show();
+                            public void onSuccess(DocumentReference documentReference) {
+                                Toast.makeText(RegisterActivity.this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Nooooo", Toast.LENGTH_SHORT).show();
                             }
-                        });
+                        });;
+
+                        /*.addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(RegisterActivity.this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(RegisterActivity.this, "Nooooo", Toast.LENGTH_SHORT).show();
+                                //Log.w(TAG, "Error adding document", e);
+                            }
+                        });*/
+
+
             }else{
                 Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
             }
 
         }
 
-        userAuth.createUserWithEmailAndPassword(userEmail, userPassword)
+        //Debe guardar el usuario solo si este no existe, debemos de checar que el correo no esté registrado, y probablemente que la contraseña no esté utilizada
+        /*userAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -98,6 +121,10 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });*/
+    }
+
+    public void checkNewUserData(){
+
     }
 }
