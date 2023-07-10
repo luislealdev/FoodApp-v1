@@ -4,16 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import luisrrleal.com.foodapp_v1.Adapter.Sections_adapter;
 import luisrrleal.com.foodapp_v1.LoginActivity;
 import luisrrleal.com.foodapp_v1.MainActivity;
 import luisrrleal.com.foodapp_v1.R;
@@ -39,9 +43,6 @@ public class Profile_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
         user  = auth.getCurrentUser();
-        logout = getView().findViewById(R.id.logout);
-        userEmail = getView().findViewById(R.id.userEmail);
-        checkUserSign();
     }
 
     public void checkUserSign(){
@@ -65,5 +66,12 @@ public class Profile_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        logout = (Button) getView().findViewById(R.id.logout);
+        userEmail = (TextView) getView().findViewById(R.id.userEmail);
+        checkUserSign();
     }
 }
