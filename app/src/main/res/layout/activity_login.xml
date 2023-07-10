@@ -58,7 +58,7 @@
 
             <EditText
               android:autofillHints="emailAddress"
-              android:id="@+id/emailLogin"
+              android:id="@+id/userEmail"
               android:layout_width="match_parent"
               android:layout_height="50dp"
               android:layout_margin="20dp"
@@ -82,7 +82,7 @@
               android:selectAllOnFocus="true"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
+              app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
             <TextView
               android:layout_width="wrap_content"

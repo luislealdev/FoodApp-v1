@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/getBack_image" />
 
         <TextView
-            android:id="@+id/emailLogin"
+            android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="21030076@itcelaya.edu.mx"
@@ -53,17 +53,18 @@
             />
 
         <Button
-            android:textColor="@color/white"
-            android:backgroundTint="@color/primary_1"
-            android:layout_marginTop="@android:dimen/app_icon_size"
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cerrar sesión"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
+          android:id="@+id/logout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@android:dimen/app_icon_size"
+          android:backgroundTint="@color/primary_1"
+          android:onClick="logoutUser"
+          android:text="Cerrar sesión"
+          android:textColor="@color/white"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
