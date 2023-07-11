@@ -17,8 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
@@ -38,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //FirebaseApp.initializeApp(RegisterActivity.this);
         userAuth = FirebaseAuth.getInstance();
         name = (EditText) findViewById(R.id.name);
         phone = (EditText) findViewById(R.id.phone);
@@ -65,6 +68,11 @@ public class RegisterActivity extends AppCompatActivity {
         String userPassword = password.getText().toString();
         String userConfirmPassword = confirmPassword.getText().toString();
 
+        //Problemas:
+            /*
+            * Píenso que al invocar 2 Toast en un tiempo muy corto la app se cierra
+            * #2: Problema iterando los datos para verificar si el correo ya está registrado (creo que no funciona el método)
+            * */
         if(userName.isEmpty() || userEmail.isEmpty() || userPassword.isEmpty() || userConfirmPassword.isEmpty()){
             Toast.makeText(this, "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
         }else{
@@ -92,15 +100,15 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "Authentication succeed.", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "createUserWithEmail:success");
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         }
                     }
                 });
     }
 
-    //Proceso paa guardar los datos en la base de datos, en la colleción "users"
+    //Proceso paa guardar los datos en la base de datos, en la collection "users"
     public void saveData_inFirestore(String userEmail, String userPassword, String userPhone, String userName){
         Map<String, Object> user = new HashMap<>();
         user.put("name", userName);
