@@ -26,7 +26,7 @@
 
             <ImageView
               android:contentDescription="@string/icon"
-              android:id="@+id/getBack_image"
+              android:id="@+id/profileImage"
               android:layout_width="100dp"
               android:layout_height="100dp"
               android:layout_marginTop="25dp"
@@ -45,7 +45,7 @@
               android:textStyle="bold"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/getBack_image" />
+              app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
             <TextView
               android:id="@+id/helper_text"

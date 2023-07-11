@@ -17,13 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -42,12 +39,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         //FirebaseApp.initializeApp(RegisterActivity.this);
         userAuth = FirebaseAuth.getInstance();
-        name = (EditText) findViewById(R.id.name);
+        name = (EditText) findViewById(R.id.userName);
         phone = (EditText) findViewById(R.id.phone);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password1);
         confirmPassword = (EditText) findViewById(R.id.password2);
-        getBack_button = (ImageView) findViewById(R.id.getBack_image);
+        getBack_button = (ImageView) findViewById(R.id.profileImage);
         backToLogin();
     }
 
