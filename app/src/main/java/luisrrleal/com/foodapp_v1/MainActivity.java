@@ -2,12 +2,8 @@ package luisrrleal.com.foodapp_v1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,7 +12,6 @@ import com.google.android.material.navigation.NavigationBarView;
 import luisrrleal.com.foodapp_v1.fragments.Cart_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Help_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Home_Fragment;
-import luisrrleal.com.foodapp_v1.fragments.Login_Fragment;
 import luisrrleal.com.foodapp_v1.fragments.Profile_Fragment;
 
 public class MainActivity extends AppCompatActivity {

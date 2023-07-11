@@ -6,16 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.List;
 
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.InfoFoodActivity;
 import luisrrleal.com.foodapp_v1.R;
 
 public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_viewholder2> {
-    ArrayList<Data_Provider> popular_food_list;
+    List<Data_Provider> popular_food_list;
 
-    public Popular_food_adapter2(ArrayList<Data_Provider> popular_food_list) {
+    public Popular_food_adapter2(List<Data_Provider> popular_food_list) {
         this.popular_food_list = popular_food_list;
     }
 
@@ -53,5 +54,10 @@ public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_vie
     @Override
     public int getItemCount() {
         return popular_food_list.size();
+    }
+
+    public void updateCardsBySearch(List<Data_Provider> cardsAux){
+        this.popular_food_list = cardsAux;
+        notifyDataSetChanged();
     }
 }

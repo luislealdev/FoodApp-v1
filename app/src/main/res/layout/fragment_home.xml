@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainSection"
-        android:paddingHorizontal="20sp"
+        android:paddingHorizontal="@dimen/containers_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragments.Home_Fragment">
@@ -21,30 +21,29 @@
             android:layout_marginTop="30dp"
             android:text="¡Hola usuario!"
             android:textColor="@color/blur_principal_1"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            style="@style/AppTheme.TextView_TitleContainer_styles"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <!--
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
+            android:src="@drawable/perrito_usuario"
             android:contentDescription="profile_picture"
-            android:src="@drawable/baseline_person_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.029" />
--->
+
         <EditText
             android:autofillHints="none"
-            android:id="@+id/editTextText"
+            android:id="@+id/search_editText"
+            android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_marginTop="20dp"
@@ -78,8 +77,8 @@
         android:id="@+id/section_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10sp"
-        android:paddingTop="30dp"
+        android:paddingHorizontal="@dimen/containers_padding"
+        android:layout_marginTop="16sp"
         android:layout_below="@id/mainSection">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -94,57 +93,69 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:layout_below="@id/section_buttons_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="10sp"
-        android:layout_marginLeft="20sp"
-        android:text="Platillos populares"/>
-
-    <ScrollView
-        android:paddingHorizontal="20sp"
+    <!-- <ScrollView
+        android:paddingHorizontal="@dimen/containers_padding"
         android:layout_marginTop="20sp"
         android:layout_below="@id/section_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/platillos_populares"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+              android:id="@+id/textView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/platillos_populares"
+              android:textSize="20sp"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_food_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"/>
+              android:id="@+id/recyclerView_food_id"
+              android:layout_width="match_parent"
+              android:layout_height="120sp"
+              android:layout_marginTop="10sp"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.0"
+              app:layout_constraintStart_toStartOf="parent"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_food_id2"
-                android:layout_below="@id/recyclerView_food_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_id" />
+              android:id="@+id/recyclerView_food_id2"
+              android:layout_width="match_parent"
+              android:layout_height="900sp"
+              android:layout_marginTop="20sp"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_id" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
+    </ScrollView> -->
+    <TextView
+      android:paddingHorizontal="@dimen/containers_padding"
+      android:id="@+id/textView4"
+      android:layout_below="@id/section_buttons_container"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/platillos_populares"
+      android:layout_marginTop="16sp"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+      android:paddingHorizontal="@dimen/containers_padding"
+      android:id="@+id/recyclerView_food_id2"
+      android:layout_below="@id/textView4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      />
 
 </RelativeLayout>
 

@@ -9,23 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import luisrrleal.com.foodapp_v1.Interfaces.RV_Item_ClickListener;
 import luisrrleal.com.foodapp_v1.Adapter.Cart_Product_adapter;
-import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter;
-import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter2;
-import luisrrleal.com.foodapp_v1.Adapter.Sections_adapter;
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 
-public class Cart_Fragment extends Fragment {
-
+public class Cart_Fragment extends Fragment{
     ArrayList<Data_Provider> cards = new ArrayList<>();
     private RecyclerView recyclerView_products_added;
-    public Cart_Fragment() {
-        // Required empty public constructor
-    }
+
 
     public static Cart_Fragment newInstance() {
         Cart_Fragment fragment = new Cart_Fragment();
@@ -50,7 +46,6 @@ public class Cart_Fragment extends Fragment {
         ));
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,11 +55,12 @@ public class Cart_Fragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
         recyclerView_products_added = (RecyclerView) getView().findViewById(R.id.recyclerView_orders);
         LinearLayoutManager rv_layoutManager3 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
         recyclerView_products_added.setLayoutManager(rv_layoutManager3);
-        recyclerView_products_added.setAdapter(new Cart_Product_adapter(cards));
-
+        Cart_Product_adapter cards_adapater = new Cart_Product_adapter(cards);
+        cards_adapater.set_RV_itemClickListener(cards_adapater);
+        recyclerView_products_added.setAdapter(cards_adapater);
     }
+
 }

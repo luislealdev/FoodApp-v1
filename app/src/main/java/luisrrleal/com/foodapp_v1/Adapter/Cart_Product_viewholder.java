@@ -1,6 +1,7 @@
 package luisrrleal.com.foodapp_v1.Adapter;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class Cart_Product_viewholder extends RecyclerView.ViewHolder {
     TextView card_title = (TextView)itemView.findViewById(R.id.cart_title_id);
     TextView card_price = (TextView)itemView.findViewById(R.id.cart_price_id);
     ImageView card_img = (ImageView) itemView.findViewById(R.id.cart_img_id);
+    Button card_button = (Button) itemView.findViewById(R.id.delete_cartItem_id);
 
     public Cart_Product_viewholder(@NonNull View itemView) {
         super(itemView);

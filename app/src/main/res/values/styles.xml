@@ -2,7 +2,12 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Set the background color to white -->
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.TextView_TitleContainer_styles">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
