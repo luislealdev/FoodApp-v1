@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,65 +68,85 @@ public class RegisterActivity extends AppCompatActivity {
         if(userName.isEmpty() || userEmail.isEmpty() || userPassword.isEmpty() || userConfirmPassword.isEmpty()){
             Toast.makeText(this, "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
         }else{
-            if(userPassword.equals(userConfirmPassword)){
-
-                Map<String, Object> user = new HashMap<>();
-                user.put("name", userName);
-                user.put("phone", userPhone);
-                user.put("email", userEmail);
-                user.put("password", userPassword);
-
-                document.collection("users")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(RegisterActivity.this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, "Nooooo", Toast.LENGTH_SHORT).show();
-                            }
-                        });;
-
-                        /*.addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(RegisterActivity.this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, "Nooooo", Toast.LENGTH_SHORT).show();
-                                //Log.w(TAG, "Error adding document", e);
-                            }
-                        });*/
-
-
+            if(!userDataRepeated(userEmail)){
+                //Si el email no ha sido registrado permite la creación del usuario
+                if(userPassword.equals(userConfirmPassword)){
+                    saveNewUser(userEmail, userPassword);
+                    saveData_inFirestore(userEmail, userPassword, userPhone, userName);
+                }else{
+                    Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                }
             }else{
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                //Si el email ya existe vamos a poner un textView que diga que el email ya está registrado
+                Toast.makeText(this, "El email "+userEmail+" ya está registrado", Toast.LENGTH_SHORT).show();
             }
-
         }
 
-        //Debe guardar el usuario solo si este no existe, debemos de checar que el correo no esté registrado, y probablemente que la contraseña no esté utilizada
-        /*userAuth.createUserWithEmailAndPassword(userEmail, userPassword)
+
+    }
+
+    //Registra un nuevo usuario en la pestaña Authetication
+    public void saveNewUser(String userEmail, String userPassword){
+        userAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "Cuenta registrada con éxito.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Authentication succeed.", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });*/
+                });
     }
 
-    public void checkNewUserData(){
+    //Proceso paa guardar los datos en la base de datos, en la colleción "users"
+    public void saveData_inFirestore(String userEmail, String userPassword, String userPhone, String userName){
+        Map<String, Object> user = new HashMap<>();
+        user.put("name", userName);
+        user.put("phone", userPhone);
+        user.put("email", userEmail);
+        user.put("password", userPassword);
 
+        document.collection("users")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(RegisterActivity.this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegisterActivity.this, "Nooooo", Toast.LENGTH_SHORT).show();
+                    }
+                });;
+    }
+
+    //Método que verifica si ese email no ha sido utilizado
+    public boolean userDataRepeated(String email){
+
+        final boolean[] isRepeated = {false};
+        //Solicita los datos de la colección de "users"
+        document.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //Itera sobre los datos guardados en el documento "users"
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String emailSaved = document.getString("email");
+                                if(emailSaved.equals(email)){
+                                    isRepeated[0] = true;
+                                }
+                            }
+                        } else {
+                            System.out.println("Problema iterando en los datos de 'users'");
+                        }
+                    }
+                });
+        return isRepeated[0];
     }
 }
