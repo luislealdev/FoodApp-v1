@@ -1,5 +1,7 @@
 package luisrrleal.com.foodapp_v1.fragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,12 +9,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter;
 import luisrrleal.com.foodapp_v1.Adapter.Popular_food_adapter2;
@@ -24,6 +36,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Home_Fragment extends Fragment{
+    FirebaseFirestore firestore;
+    CollectionReference foodRefereence;
     private EditText search_bar;
     private RecyclerView recyclerView_food;
     private RecyclerView recyclerView_sections;
@@ -49,6 +63,9 @@ public class Home_Fragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //searchItems();
+        //Esta ruta debe cambiar dinámicamente de acuerdo con el evento que se genere al hacer click en x section
+        firestore = FirebaseFirestore.getInstance();
+        foodRefereence = firestore.collection("food/mealsID/mealsData");
         fill_cards_info();
         fill_section_info();
     }
@@ -77,19 +94,32 @@ public class Home_Fragment extends Fragment{
         });
     }
 
+
+
     public void fill_cards_info(){
-        cards.add(new Data_Provider(
-                "Hot cakes", "50.00",R.drawable.comida1
-        ));
-        cards.add(new Data_Provider(
-                "Caldo de caldo","50.00",R.drawable.comida2
-        ));
-        cards.add(new Data_Provider(
-                "Burritos de guiso","60.00",R.drawable.comida3
-        ));
-        cards.add(new Data_Provider(
-                "Burguir con papas", "60.00",R.drawable.comida4
-        ));
+        foodRefereence
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot = task.getResult();
+                            for (QueryDocumentSnapshot foodInfo : querySnapshot) {
+                                Log.d(TAG, foodInfo.getId() + " => " + foodInfo.getData());
+                                String foodTitle = foodInfo.getString("name");
+                                String foodPrice = foodInfo.getString("price");
+                                //String foodImage = foodInfo.getString("imgResource");
+                                cards.add(new Data_Provider(
+                                        foodTitle, foodPrice,R.drawable.comida1
+                                ));
+                            }
+                        } else {
+                            //No sé porqué se daría un error, pero si es por coneixón a internet, podemos hacer que se renderize
+                            //un componente
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });;
     }
 
     public void fill_section_info(){
@@ -124,6 +154,6 @@ public class Home_Fragment extends Fragment{
         recyclerView_food = (RecyclerView) getView().findViewById(R.id.recyclerView_food_id2);
         LinearLayoutManager rv_layoutManager3 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
         recyclerView_food.setLayoutManager(rv_layoutManager3);
-        recyclerView_food.setAdapter(vertical_cards);
+        recyclerView_food.setAdapter(new Popular_food_adapter2(cards));
     }
 }
