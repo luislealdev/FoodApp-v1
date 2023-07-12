@@ -1,5 +1,7 @@
 package luisrrleal.com.foodapp_v1.Domain;
 
+import android.graphics.Bitmap;
+
 public class Data_Provider {
     String cardTitle;
     String cardPrice;
@@ -7,12 +9,18 @@ public class Data_Provider {
 
     int numberInCart;
     int cardImgResource;
+    Bitmap cardImgResource2;
 
     //Constructor for the Food cards of the RecyclerView
     public Data_Provider(String cardTitle, String cardPrice, int cardImgResource) {
         this.cardTitle = cardTitle;
         this.cardPrice = cardPrice;
         this.cardImgResource = cardImgResource;
+    }
+    public Data_Provider(String cardTitle, String cardPrice, Bitmap cardImgResource) {
+        this.cardTitle = cardTitle;
+        this.cardPrice = cardPrice;
+        this.cardImgResource2 = cardImgResource;
     }
 
     //Constructor for the Food sections cards
@@ -68,6 +76,14 @@ public class Data_Provider {
 
     public void setCardImgResource(int cardImgResource) {
         this.cardImgResource = cardImgResource;
+    }
+
+    public Bitmap getCardImgResource2() {
+        return cardImgResource2;
+    }
+
+    public void setCardImgResource2(Bitmap cardImgResource2) {
+        this.cardImgResource2 = cardImgResource2;
     }
 }
 

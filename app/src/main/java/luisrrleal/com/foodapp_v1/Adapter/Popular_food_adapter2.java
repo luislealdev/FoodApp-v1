@@ -44,8 +44,7 @@ public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_vie
                 Intent i = new Intent(v.getContext(), InfoFoodActivity.class);
                 i.putExtra("sentTitle", popular_food_list.get(indexCard).getCardTitle());
                 i.putExtra("sentPrice", popular_food_list.get(indexCard).getCardPrice());
-                i.putExtra("sentImg", popular_food_list.get(indexCard).getCardImgResource());
-
+                i.putExtra("sentImg", popular_food_list.get(indexCard).getCardImgResource2());
                 v.getContext().startActivity(i);
             }
         });

@@ -25,6 +25,6 @@ public class Popular_food_viewholder2 extends RecyclerView.ViewHolder {
     public void render_card(Data_Provider popular_food_item){
         card_title.setText(popular_food_item.getCardTitle());
         card_price.setText(popular_food_item.getCardPrice());
-        card_img.setBackgroundResource(popular_food_item.getCardImgResource());
+        //card_img.setBackgroundResource(popular_food_item.getCardImgResource());        card_img.setImageBitmap(popular_food_item.getCardImgResource2());
     }
 }

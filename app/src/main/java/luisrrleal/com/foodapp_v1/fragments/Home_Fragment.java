@@ -2,6 +2,8 @@ package luisrrleal.com.foodapp_v1.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,15 +16,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -36,6 +40,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Home_Fragment extends Fragment{
+    //Conumiendo de Storage de FireBase
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+    //StorageReference imageRef = storageRef.child("gs://food-app-addb9.appspot.com/food_images/meals");
     FirebaseFirestore firestore;
     CollectionReference foodRefereence;
     private EditText search_bar;
@@ -62,9 +70,9 @@ public class Home_Fragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //searchItems();
-        //Esta ruta debe cambiar dinámicamente de acuerdo con el evento que se genere al hacer click en x section
+        System.out.println("Storageee: "+storageRef.child("food_images/meals"));
         firestore = FirebaseFirestore.getInstance();
+        //Esta ruta debe cambiar dinámicamente de acuerdo con el evento que se genere al hacer click en x section
         foodRefereence = firestore.collection("food/mealsID/mealsData");
         fill_cards_info();
         fill_section_info();
@@ -94,8 +102,6 @@ public class Home_Fragment extends Fragment{
         });
     }
 
-
-
     public void fill_cards_info(){
         foodRefereence
                 .get()
@@ -105,12 +111,15 @@ public class Home_Fragment extends Fragment{
                         if (task.isSuccessful()) {
                             QuerySnapshot querySnapshot = task.getResult();
                             for (QueryDocumentSnapshot foodInfo : querySnapshot) {
-                                Log.d(TAG, foodInfo.getId() + " => " + foodInfo.getData());
                                 String foodTitle = foodInfo.getString("name");
+                                String foodTitleAdapted = adaptFoodTitle(foodTitle);
                                 String foodPrice = foodInfo.getString("price");
-                                //String foodImage = foodInfo.getString("imgResource");
+
+                                //NOTA: para que esto funcione, el documento debe tener el mismo nombre que el título de la comida
+                                StorageReference imgReference = storageRef.child("food_images/meals/"+foodTitleAdapted);
+                                Bitmap foodImage = getImgResourceFromFireBaseStorage(imgReference);
                                 cards.add(new Data_Provider(
-                                        foodTitle, foodPrice,R.drawable.comida1
+                                        foodTitle, foodPrice,foodImage
                                 ));
                             }
                         } else {
@@ -120,6 +129,34 @@ public class Home_Fragment extends Fragment{
                         }
                     }
                 });;
+    }
+
+    public Bitmap getImgResourceFromFireBaseStorage(StorageReference imgReference){
+        final Bitmap[] bitmap = new Bitmap[1];
+        imgReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                bitmap[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Handle any errors that occur during retrieval
+            }
+        });
+        return bitmap[0];
+    }
+
+    public String adaptFoodTitle(String foodTitle){
+        String adapted = "";
+        for (int i = 0; i <foodTitle.length(); i++) {
+            if(foodTitle.charAt(i) != ' '){
+                adapted += foodTitle.charAt(i);
+            }else{
+                adapted += "_";
+            }
+        }
+        return adapted.toLowerCase();
     }
 
     public void fill_section_info(){
