@@ -126,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(RegisterActivity.this, "Nooooo", Toast.LENGTH_SHORT).show();
                     }
-                });;
+                });
     }
 
     //Método que verifica si ese email no ha sido utilizado

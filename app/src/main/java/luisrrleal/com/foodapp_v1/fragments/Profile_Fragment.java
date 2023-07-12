@@ -33,6 +33,7 @@ import luisrrleal.com.foodapp_v1.MainActivity;
 import luisrrleal.com.foodapp_v1.R;
 
 public class Profile_Fragment extends Fragment {
+    int contador = 0;
     FirebaseAuth auth;
     FirebaseUser user;
     FirebaseFirestore firestore;
@@ -72,6 +73,8 @@ public class Profile_Fragment extends Fragment {
         }
     }
 
+    //No estoy seguro de que sea buena idea hacer esto, ya que tendría que buscar entre todos los
+    //usarios guardados en lugar de acceder directamente
     public void getUserDataFromFirestore(){
         collectionUser.whereEqualTo("email", user.getEmail())
                 .get()
@@ -83,6 +86,7 @@ public class Profile_Fragment extends Fragment {
                             QuerySnapshot querySnapshot = task.getResult();
                             if (querySnapshot != null) {
                                 for (QueryDocumentSnapshot documentSnapshot : querySnapshot) {
+                                    System.out.println("Pasé aquí "+contador++);
                                     String collectoin_userName = documentSnapshot.getString("name");
                                     String collection_userEmail = documentSnapshot.getString("email");
                                     userName.setText(collectoin_userName);
