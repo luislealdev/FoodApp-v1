@@ -11,6 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
+//AristiDevs explicación
+//se llamará con cada uno de los items del arraylist de Data_Provider que definimos en el adapter, se encargará de tomar cada uno de esos datos y hacer su renderizado.
+
+//Básicamente representa un elemento individual de un RV, por lo que es se llamará a sus métodos las mismas cantidad de veces de la longitud de nustro ArrayList de Data_Provider.
+
+//Proporciona esta clase una manera de acceder y actualizar eficientemente los datos del elemento individual
+
+//El RV necesita del VH para reciclar automáticamente las vistas fuera de pantalla para reutilizarlas cuanod se necesiten mostrar nuevos elementos que se vuelvan visibles.
+
+//El VH hace un inflate de un elemento específico,¿-- a su vez, se guardan las referencias a las vistas cerce de ese elemento para su posterior uso--?
 
 public class Cart_Product_viewholder extends RecyclerView.ViewHolder {
 
@@ -29,7 +39,7 @@ public class Cart_Product_viewholder extends RecyclerView.ViewHolder {
         card_price.setText(popular_food_item.getCardPrice());
         card_img.setBackgroundResource(popular_food_item.getCardImgResource());
     }
-    public  int getIndexCard(){
+    public int getIndexCard(){
         //return itemView
         return 0;
     }

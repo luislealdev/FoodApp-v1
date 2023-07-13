@@ -36,7 +36,7 @@ public class Cart_Fragment extends Fragment{
         fill_cards_info();
     }
 
-    //Este método sólo es para poder visualizar cómo se vería un item agregado en el carrito, aún no funciona
+    //Este método sólo es temporal, nos ayuda a simular la visualización de 2 items agregado en el carrito
     public void fill_cards_info(){
         cards.add(new Data_Provider(
                 "Hot cakes", "50.00","",3,R.drawable.comida1
@@ -56,9 +56,14 @@ public class Cart_Fragment extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         recyclerView_products_added = (RecyclerView) getView().findViewById(R.id.recyclerView_orders);
-        LinearLayoutManager rv_layoutManager3 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
+        //Un RecyclerView no determina por sí solo como serán mostardo sus items, pesta parte de la lógica
+        //esta separada de dicho framework, la rsponsabilidad de ello es de un LayoutManager, dicha clase provee funciones
+        //como: scrolling, item recycling, and view recycling to optimize performance and memory usage.
         recyclerView_products_added.setLayoutManager(rv_layoutManager3);
         Cart_Product_adapter cards_adapater = new Cart_Product_adapter(cards);
+
+        //En este línea asigmnamos una referencia de el listado al cual le estaremos modificando su estado 
+        //(en este caso borrando los items)
         cards_adapater.set_RV_itemClickListener(cards_adapater);
         recyclerView_products_added.setAdapter(cards_adapater);
     }
