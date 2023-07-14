@@ -42,13 +42,26 @@ import java.util.stream.Collectors;
 //Los códigos que se usan para comunicar FireBase y la aplicación son la gran mayoría un copia y pega de la documentación
 //oficial de Google, ajustando algunas cosas para que cumpla algunas necesidades específicas 
 
+//Es importante saber que la instancia de FirebaseStorage nos proporciona acceso al storage, donde se pretende almacenar los
+//archivos de imágen, en cambio, FirebaseFirestore hace refrencia a otro servicio que es el de almacenamiento en una base de 
+//datos tipo noSQL, ahí es donde se escriben de los usuarios que se reigistran, y donde se pretende guardar las órdenes hechas
+//
+
 public class Home_Fragment extends Fragment{
-    //Consumiendo de Storage de FireBase
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+    //Consumiendo del Storage de FireBase. 
+
+    //El storage toma servirá para descargar desde nuestro Cloud Storage, el getInstance sirve para retornar ese Storage 
+    //que previamente se inicilaiza con una instancia de FirebaseApp, pero no ay necesidad de hacer una instancia de esta clase
+    //porque ya sabe que nos referimos a nuestra app sin necesdiad de especificarlo (se logra gracias a las configuraciones del SDK)
+    FirebaseStorage storage = FirebaseStorage.getInstance(); 
+
+    //Este objeto no sproporcionará la manera de representar el Storage qu esolicitamos, además de incluir los métodos necesarions
+    //para solicitar o setear nuevos datos
     StorageReference storageRef = storage.getReference();
-    //StorageReference imageRef = storageRef.child("gs://food-app-addb9.appspot.com/food_images/meals");
+    
     FirebaseFirestore firestore;
     CollectionReference foodReference;
+
     private EditText search_bar;
     private RecyclerView recyclerView_food;
     private RecyclerView recyclerView_sections;
@@ -73,7 +86,6 @@ public class Home_Fragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("Storageee: "+storageRef.child("food_images/meals"));
         firestore = FirebaseFirestore.getInstance();
         //Esta ruta debe cambiar dinámicamente de acuerdo con el evento que se genere al hacer click en x section
         foodReference = firestore.collection("food/mealsID/mealsData");

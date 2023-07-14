@@ -55,8 +55,8 @@ public class Cart_Fragment extends Fragment{
         //En este línea asignamos una referencia del listado al cual le estaremos modificando su estado 
         //(en este caso borrando los items)
 
-        //No hay que olvidar que la instancia de uan interfaz podemos inicilizarla con cualquier otra instnacia de 
-        //algunz clase que la implemente
+        //No hay que olvidar que la instancia de una interfaz podemos inicilizarla con cualquier otra instnacia de 
+        //alguna clase que la implemente
         cards_adapater.set_RV_itemClickListener(cards_adapater);
         recyclerView_products_added.setAdapter(cards_adapater);
     }
