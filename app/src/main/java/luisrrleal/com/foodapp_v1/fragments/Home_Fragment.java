@@ -39,13 +39,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Los códigos que se usan para comunicar FireBase y la aplicación son la gran mayoría un copia y pega de la documentación
+//oficial de Google, ajustando algunas cosas para que cumpla algunas necesidades específicas 
+
 public class Home_Fragment extends Fragment{
-    //Conumiendo de Storage de FireBase
+    //Consumiendo de Storage de FireBase
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
     //StorageReference imageRef = storageRef.child("gs://food-app-addb9.appspot.com/food_images/meals");
     FirebaseFirestore firestore;
-    CollectionReference foodRefereence;
+    CollectionReference foodReference;
     private EditText search_bar;
     private RecyclerView recyclerView_food;
     private RecyclerView recyclerView_sections;
@@ -73,11 +76,15 @@ public class Home_Fragment extends Fragment{
         System.out.println("Storageee: "+storageRef.child("food_images/meals"));
         firestore = FirebaseFirestore.getInstance();
         //Esta ruta debe cambiar dinámicamente de acuerdo con el evento que se genere al hacer click en x section
-        foodRefereence = firestore.collection("food/mealsID/mealsData");
+        foodReference = firestore.collection("food/mealsID/mealsData");
         fill_cards_info();
         fill_section_info();
     }
 
+    //Método en el que se agrega un listener al search_bar, el método implementado requiere que le paemos un tipo de 
+    //clase abstracta el cual nos proporciona los métodos para manejar el evento. 
+    //Yo lo veo como un equivalente a usar el onChange para actualizar el estado en React, solo que nuestra variable
+    //que recibe las cards filtradas, actualiza todo el Adapter que contiene el RecyclerView
     public void set_Search_bar(){
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,8 +109,11 @@ public class Home_Fragment extends Fragment{
         });
     }
 
+    //Aquí lo que hice fue copiar y pegar de la documentación de FireBase, el método get obtiene la información y el addOnCompleteListener
+    //nos ayuda a manejar peticiones asíncronas. El QuerySnapshot es ese tipo de dato que devuelve FireBase cunado hacemos una 
+    //petición de los datos, representa nuestras colleción de comida/meals guardada 
     public void fill_cards_info(){
-        foodRefereence
+        foodReference
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -124,29 +134,43 @@ public class Home_Fragment extends Fragment{
                             }
                         } else {
                             //No sé porqué se daría un error, pero si es por coneixón a internet, podemos hacer que se renderize
-                            //un componente
+                            //un componente que lo indique
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });;
     }
 
+    //Este es el método que separa la lógica de consumir del storage, aquí ya tenemos la referencia al archivo en firebase
+    //El métood getBytes descarga asincrónicamente un objeto que es la imágen, después lo convierte a un array de bytes, 
+    //el parámetro indicará el tamaño máximo de bytes que se peuden almacenar.
+
+    //Los addOnSuccessListener/addOnFailureListener son los métodos para manejar la respuesta de un callback, creo que es el 
+    //equivalente a un .then o .catch cuando usamos fetch
     public Bitmap getImgResourceFromFireBaseStorage(StorageReference imgReference){
         final Bitmap[] bitmap = new Bitmap[1];
-        imgReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                bitmap[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        imgReference.getBytes(Long.MAX_VALUE)
+        .addOnSuccessListener(
+            new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    //El código anterior maneja la respuesta como .then, al final nos quedamos con un array de bytes
+                    //, para convertirlos a un BitMap como tal, es necesario emplear el método siguiente, al cual le pasamos:
+                    //el array de bytes, el índice donde empieza a decodificar, y el índice donde termina a decodificar
+                    bitmap[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                }
             }
-        }).addOnFailureListener(new OnFailureListener() {
+        ).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                // Handle any errors that occur during retrieval
+                
             }
         });
         return bitmap[0];
     }
 
+    //Método para pasar el formato del título del platillo que aparece en la card a lowerCase y con guiones bajos
+    //Ese formato es como se planea estén guardados los nombres en jpg, así podremos consumir las imágenes 
     public String adaptFoodTitle(String foodTitle){
         String adapted = "";
         for (int i = 0; i <foodTitle.length(); i++) {
@@ -178,6 +202,9 @@ public class Home_Fragment extends Fragment{
         LinearLayoutManager rv_layoutManager1 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.HORIZONTAL,false);
         recyclerView_sections.setLayoutManager(rv_layoutManager1);
         recyclerView_sections.setAdapter(new Sections_adapter(sections));
+
+        //Este es el RV que tenía las cards más pequeñas y estaba en horizontal, pero lo comenté tanto en el layout del 
+        //xml y aquí porque no pude reoslver el problema del render que no se veía fluido
 
         //Get the recycelrView of popular food and render it in the fragment
         /*recyclerView_food = (RecyclerView) getView().findViewById(R.id.recyclerView_food_id);

@@ -48,16 +48,16 @@ public class Cart_Product_adapter extends RecyclerView.Adapter<Cart_Product_view
     public void onBindViewHolder(@NonNull Cart_Product_viewholder holder, int position) {
         holder.render_card(cart_products.get(position));
 
-        //Agrega el event listener al botón
+        //Este event listener es necesario definirlo en este adapter, ya que es el que renderiza la lista de productos 
+        //agregados al carrito, y nos provee del código para borrarlo si así lo quisieramos
         holder.card_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(listener != null){
-                    //Toast.makeText(v.getContext(), "ya no soy nuloooo", Toast.LENGTH_SHORT).show();
                     int cartItem_index = holder.getAdapterPosition();
                     listener.rv_itemClick_event(cartItem_index);
                 }else{
-                    Toast.makeText(v.getContext(), "Soy nuloooo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), "", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
-//AristiDevs explicación
 //se llamará con cada uno de los items del arraylist de Data_Provider que definimos en el adapter, se encargará de tomar cada uno de esos datos y hacer su renderizado.
 
 //Básicamente representa un elemento individual de un RV, por lo que es se llamará a sus métodos las mismas cantidad de veces de la longitud de nustro ArrayList de Data_Provider.
