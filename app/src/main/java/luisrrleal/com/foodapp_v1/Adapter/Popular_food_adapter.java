@@ -34,6 +34,9 @@ public class Popular_food_adapter extends RecyclerView.Adapter<Popular_food_view
         setClickEvent(holder, indexCard);
     }
 
+    // Cuando ocurre el evento de que un item del RecyclerView es pulsado, se crea una instancia de un objeto Intent,
+    // el cual tiene una referencia a la clase "InfoFoodActivity", donde se podrá hacer la órden de un platillo, para 
+    // guardar la información del mismo, se almacenarán en el intent, y se consumirán en la activity previamente mencionada.
     public void setClickEvent(Popular_food_viewholder holder, int indexCard){
         holder.food_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +45,6 @@ public class Popular_food_adapter extends RecyclerView.Adapter<Popular_food_view
                 i.putExtra("sentTitle", popular_food_list.get(indexCard).getCardTitle());
                 i.putExtra("sentPrice", popular_food_list.get(indexCard).getCardPrice());
                 i.putExtra("sentImg", popular_food_list.get(indexCard).getCardImgResource());
-
                 v.getContext().startActivity(i);
             }
         });
