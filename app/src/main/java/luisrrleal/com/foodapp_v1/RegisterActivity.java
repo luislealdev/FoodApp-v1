@@ -4,6 +4,9 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.datastore.preferences.core.Preferences;
+import androidx.datastore.preferences.rxjava3.RxPreferenceDataStoreBuilder;
+import androidx.datastore.rxjava3.RxDataStore;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +31,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
+    //Never create more than one instance of DataStore for a given file in the same process.
+    UserDataStore userDataStore;
+    RxDataStore<Preferences> dataStoreRX;
 
     EditText name, phone, email, password, confirmPassword;
     ImageView getBack_button;
@@ -39,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        setUserDataStore();
         //FirebaseApp.initializeApp(RegisterActivity.this);
         userAuth = FirebaseAuth.getInstance();
         name = (EditText) findViewById(R.id.userName);
@@ -57,10 +64,6 @@ public class RegisterActivity extends AppCompatActivity {
         String userPassword = password.getText().toString();
         String userConfirmPassword = confirmPassword.getText().toString();
         
-        //Problemas:
-            /*
-            * Pienso que al invocar 2 Toast en un tiempo muy corto la app se cierra
-            * */
         if(userName.isEmpty() || userEmail.isEmpty() || userPassword.isEmpty() || userConfirmPassword.isEmpty()){
             Toast.makeText(this, "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
         }else{
@@ -98,6 +101,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    public void setUserDataStore(){
+        userDataStore = UserDataStore.getInstance();
+        if (userDataStore.getDataStore() == null) {
+            dataStoreRX = new RxPreferenceDataStoreBuilder(this, "USER_DATA").build();
+        } else {
+            dataStoreRX = userDataStore.getDataStore();
+        }
+        userDataStore.setDataStore(dataStoreRX);
+    }
+
     //Proceso paa guardar los datos en la base de datos, en la collection "users"
     public void saveData_inFirestore(String userEmail, String userPassword, String userPhone, String userName){
         Map<String, Object> user = new HashMap<>();
@@ -106,12 +119,17 @@ public class RegisterActivity extends AppCompatActivity {
         user.put("email", userEmail);
         user.put("password", userPassword);
 
+        String email = (user.get("email").toString());
+        String password = user.get("password").toString();
+        userDataStore.putStringValue("USER_DATA", email+"/"+password);
+
         document.collection("users")
         .add(user)
         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(RegisterActivity.this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
+
             }
         })
         .addOnFailureListener(new OnFailureListener() {
