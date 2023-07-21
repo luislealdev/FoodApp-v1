@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_x, help_fragment).commit();
                     //loadFragment(Help_Fragment.newInstance());
                 }
-
                 return false;
             }
         });
