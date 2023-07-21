@@ -27,6 +27,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -39,6 +40,8 @@ import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.R;
 import luisrrleal.com.foodapp_v1.databinding.FragmentHomeBinding;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,23 +79,6 @@ public class Home_Fragment extends Fragment {
 
         foodCollection = firestore.collection("food/mealsID/mealsData");
         foodStorage = storage.getReference("food_images/meals");
-        /*foodStorage.child("hot_cakes.jpg").getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // File data is returned as bytes. You can log the length of the file for verification.
-                Log.d("FirebaseStorage", "File Size: " + bytes.length + " bytes");
-
-                // If you want to convert the bytes to a Bitmap, you can do something like this:
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                Log.d("FirebaseStorage", "Bitmap Width: " + bitmap.getWidth());
-                Log.d("FirebaseStorage", "Bitmap Height: " + bitmap.getHeight());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e("FirebaseStorage", "EROORRRRR " + e.getMessage());
-            }
-        });*/
 
         fill_cards_info();
         fill_section_info();
@@ -101,10 +87,7 @@ public class Home_Fragment extends Fragment {
     public void set_Search_bar(){
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -114,14 +97,10 @@ public class Home_Fragment extends Fragment {
                         .collect(Collectors.toList());
                 vertical_cards.updateCardsBySearch(cardsAux);
             }
-
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
     }
-
     public void fill_cards_info(){
         foodCollection
                 .get()
@@ -134,9 +113,12 @@ public class Home_Fragment extends Fragment {
                                 String foodTitle = foodInfo.getString("name");
                                 String foodPrice = foodInfo.getString("price");
                                 String foodTitleAdapted = adaptFoodTitle(foodTitle);
-                                Bitmap foodImage = getImageFromStorage(foodTitleAdapted);
 
-                                cards.add(new Data_Provider(foodTitle, foodPrice, foodImage));
+                                Data_Provider cardX = new Data_Provider("", "", null);
+                                cardX.setCardTitle(foodTitle);
+                                cardX.setCardPrice(foodPrice);
+                                setImageResource(foodTitleAdapted, cardX);
+                                cards.add(cardX);
                             }
                         } else {
                             System.out.println("Error getting the food collection");
@@ -144,23 +126,29 @@ public class Home_Fragment extends Fragment {
                     }
                 });;
     }
+    public void setImageResource(String foodURL, Data_Provider cardX){
+        try {
+            File localfile = File.createTempFile("demoFile", ".jpg");
+            StorageReference foodDemo = foodStorage.child(foodURL);
 
-    public Bitmap getImageFromStorage(String foodURL){
-        final Bitmap[] imgResource = {null};
-        foodStorage.child(foodURL).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-               imgResource[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                System.out.println("Error con las imágenes del Storage");
-            }
-        });
-        return imgResource[0];
+            foodDemo.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            Bitmap imgBitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            cardX.setCardImgResource2(imgBitmap);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@androidx.annotation.NonNull Exception e) {
+                            System.out.println("Error prueba DEMO");
+                        }
+                    });
+        } catch (IOException error) {
+            System.out.println("Error ejecutando clase File para crear archivo de imágen de comida");
+        }
     }
-
     public String adaptFoodTitle(String foodTitle){
         String adapted = "";
         for (int i = 0; i <foodTitle.length(); i++) {
@@ -191,7 +179,6 @@ public class Home_Fragment extends Fragment {
         set_Search_bar();
 
         recyclerView_sections = (RecyclerView) getView().findViewById(R.id.recyclerView_sections_id);
-        //recyclerView_sections = binding.recyclerViewSectionsId; --> Esta línea es para usar el binding en vez de la sintaxis de arriba
         LinearLayoutManager rv_layoutManager1 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.HORIZONTAL,false);
         recyclerView_sections.setLayoutManager(rv_layoutManager1);
         recyclerView_sections.setAdapter(new Sections_adapter(sections));

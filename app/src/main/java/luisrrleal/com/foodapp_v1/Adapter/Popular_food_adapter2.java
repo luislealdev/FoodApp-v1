@@ -4,14 +4,18 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
+
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import luisrrleal.com.foodapp_v1.Domain.Data_Provider;
 import luisrrleal.com.foodapp_v1.InfoFoodActivity;
 import luisrrleal.com.foodapp_v1.R;
+import luisrrleal.com.foodapp_v1.fragments.Home_Fragment;
 
 public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_viewholder2> {
     List<Data_Provider> popular_food_list;
@@ -33,11 +37,10 @@ public class Popular_food_adapter2 extends RecyclerView.Adapter<Popular_food_vie
     public void onBindViewHolder(@NonNull Popular_food_viewholder2 holder, int position) {
         holder.render_card(popular_food_list.get(position));
         int indexCard = holder.getAdapterPosition();
-        setClickEvent(holder, indexCard);
+        displayInfoActivity(holder, indexCard);
     }
 
-    public void setClickEvent(Popular_food_viewholder2 holder, int indexCard){
-
+    public void displayInfoActivity(Popular_food_viewholder2 holder, int indexCard){
         holder.food_card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
