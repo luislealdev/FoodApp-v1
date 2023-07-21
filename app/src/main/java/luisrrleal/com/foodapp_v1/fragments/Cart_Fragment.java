@@ -49,6 +49,7 @@ public class Cart_Fragment extends Fragment{
         //Un RecyclerView no determina por sí solo como serán mostrados sus items, pesta parte de la lógica
         //esta separada de dicho framework, la rsponsabilidad de ello es de un LayoutManager, dicha clase provee funciones
         //como: scrolling, reciclar los items y las vistas, además de optmizar el performance o el uso de memoria.
+        LinearLayoutManager rv_layoutManager3 = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
         recyclerView_products_added.setLayoutManager(rv_layoutManager3);
         Cart_Product_adapter cards_adapater = new Cart_Product_adapter(cards);
 
